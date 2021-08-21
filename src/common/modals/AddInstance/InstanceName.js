@@ -26,6 +26,7 @@ import bgImage from '../../assets/mcCube.jpg';
 import { downloadFile } from '../../../app/desktop/utils/downloader';
 import { FABRIC, VANILLA, FORGE, FTB, CURSEFORGE } from '../../utils/constants';
 import { getFTBModpackVersionData } from '../../api';
+import { translate } from '../../../../public/i18n';
 
 const InstanceName = ({
   in: inProp,
@@ -251,10 +252,10 @@ const InstanceName = ({
           await new Promise((resolve, reject) => {
             dispatch(
               openModal('ActionConfirmation', {
-                message: `At least ${data?.specs?.minimum}MB of RAM are required to play this modpack and you only have ${userMemory}MB. You might still be able to play it but probably with low performance. Do you want to continue?`,
+                message: `${translate('addInstance:instance_name.at_least')} ${data?.specs?.minimum}${translate('addInstance:instance_name.low_memory_warning_desc1')} ${userMemory}${translate('addInstance:instance_name.low_memory_warning_desc2')}`,
                 confirmCallback: () => resolve(),
                 abortCallback: () => reject(),
-                title: 'Low Memory Warning'
+                title: translate('addInstance:import.low_memory_warning')
               })
             );
           });
@@ -447,9 +448,9 @@ const InstanceName = ({
                       `}
                     >
                       {invalidName &&
-                        'Instance name is not valid or too long. Please try another one'}
+                        translate('addInstance:instance_name.instance_name_not_valid')}
                       {alreadyExists &&
-                        'An instance with this name already exists!'}
+                        translate('addInstance:instance_name.instance_already_exist')}
                     </div>
                   </div>
                 </div>

@@ -1,0 +1,18 @@
+{
+  "curse_forge": {
+    "index": {
+      "export_instance": "Export Instance"
+    },
+    "first_step": {
+      "instance_content": "Instance content"
+    },
+    "second_step": {
+      "files_to_include_in_export": "Files to include in export"
+    },
+    "third_step": {
+      "all_done": "All Done!",
+      "go_back_to_instances": "Go Back To Instances",
+      "doing_magical_stuff": "We're doing some magical stuff"
+    }
+  }
+}

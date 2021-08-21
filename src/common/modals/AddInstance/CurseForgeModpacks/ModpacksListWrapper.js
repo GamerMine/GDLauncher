@@ -7,6 +7,7 @@ import ContentLoader from 'react-content-loader';
 import { transparentize } from 'polished';
 import { openModal } from '../../../reducers/modals/actions';
 import { CURSEFORGE } from '../../../utils/constants';
+import { translate } from '../../../../../public/i18n';
 
 const ModpacksListWrapper = ({
   // Are there more items to load?
@@ -94,7 +95,9 @@ const ModpacksListWrapper = ({
               setStep(1);
             }}
           >
-            Download Latest
+            {translate(
+              'addInstance:curse_forge_modpack.modpack_list_wrapper.download_latest'
+            )}
           </div>
           <div
             onClick={() => {
@@ -109,7 +112,9 @@ const ModpacksListWrapper = ({
               );
             }}
           >
-            Explore / Versions
+            {translate(
+              'addInstance:curse_forge_modpack.modpack_list_wrapper.explore_versions'
+            )}
           </div>
         </ModpackHover>
       </div>

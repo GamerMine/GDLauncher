@@ -12,6 +12,7 @@ import backgroundVideo from '../../../common/assets/onboarding.webm';
 import { _getCurrentAccount } from '../../../common/utils/selectors';
 import BisectHosting from '../../../ui/BisectHosting';
 import { openModal } from '../../../common/reducers/modals/actions';
+import { translate } from '../../../../public/i18n';
 
 const Background = styled.div`
   position: absolute;
@@ -124,7 +125,7 @@ const Home = () => {
             padding: 0 120px;
           `}
         >
-          {account.selectedProfile.name}, welcome to GDLauncher!
+          {account.selectedProfile.name}, bienvenue sur GDLauncher!
         </div>
       </div>
       <div
@@ -147,9 +148,7 @@ const Home = () => {
             margin: 20% 10%;
           `}
         >
-          GDlauncher is completely free and open source. <br />
-          If you want to support us, consider renting a server on BisectHosting,
-          our official partner!
+          {translate('onboarding:gdlauncher_open_source_text')}
           <br />
           <br />
           <div
@@ -185,7 +184,7 @@ const Home = () => {
             margin: 20%;
           `}
         >
-          Or you can also support us through Patreon.
+          {translate('onboarding:patreon_support_text')}
           <div
             css={`
               margin: 40px;
@@ -196,7 +195,7 @@ const Home = () => {
                 css={`
                   cursor: pointer;
                 `}
-                alt="Become a Patron"
+                alt={translate('onboarding:become_a_donator')}
                 src="https://gdevs.io/img/become_a_patron_button.png"
               />
             </a>
@@ -227,8 +226,7 @@ const Home = () => {
             margin: 20%;
           `}
         >
-          Also, don&apos;t forget to join us on Discord! This is where our
-          community is!
+          {translate('onboarding:join_discord_text')}
           <iframe
             css={`
               margin-top: 40px;

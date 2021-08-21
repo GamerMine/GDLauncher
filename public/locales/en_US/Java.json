@@ -1,0 +1,14 @@
+{
+  "autodetect_java_path": "Autodetect Java Path",
+  "run_java_setup_again": "Run Java Setup again",
+  "run_java_setup_again_description": "Disable this to specify a custom java path to use instead of using\nopenJDK shipped with GDLauncher if that is the case select the path to\nyour Java executable.",
+  "game_resolution": "Game Resolution",
+  "game_resolution_description": "Select the initial game resolution in pixels (width x height)",
+  "width": "width",
+  "height": "Height",
+  "presets": "Presets",
+  "java_memory": "Java Memory",
+  "java_memory_description": "Select the preferred amount of memory to use when launching the game",
+  "java_custom_arguments": "Java Custom Arguments",
+  "java_custom_arguments_description": "Select the preferred custom arguments to use when launching the game"
+}

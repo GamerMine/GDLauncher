@@ -1,0 +1,18 @@
+{
+  "curse_forge": {
+    "index": {
+      "export_instance": "Exporter l'instance"
+    },
+    "first_step": {
+      "instance_content": "Contenu de l'instance"
+    },
+    "second_step": {
+      "files_to_include_in_export": "Fichiers à inclure dans l'export"
+    },
+    "third_step": {
+      "all_done": "C'est finit !",
+      "go_back_to_instances": "Retourner aux instances",
+      "doing_magical_stuff": "Nous faisons des choses magiques"
+    }
+  }
+}

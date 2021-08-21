@@ -1,0 +1,14 @@
+{
+  "autodetect_java_path": "Détection automatique de Java",
+  "run_java_setup_again": "Relancer l'installation de Java",
+  "run_java_setup_again_description": "Désactiver cela pour spécifier un chemin personnalisé pour Java à utiliser\nau lieu de celui intégré à GDLauncher.",
+  "game_resolution": "Résolution du jeu",
+  "game_resolution_description": "Sélectionnez la résolution initiale du jeu en pixel (largeur x hauteur)",
+  "width": "largeur",
+  "height": "Hauteur",
+  "presets": "Presets",
+  "java_memory": "Mémoire Java",
+  "java_memory_description": "Sélectionnez la quantitée de mémoire à utiliser",
+  "java_custom_arguments": "Arguments Java",
+  "java_custom_arguments_description": "Renseignez les arguments Java souhaités"
+}

@@ -8,6 +8,7 @@ import { transparentize } from 'polished';
 import { openModal } from '../../../reducers/modals/actions';
 import { FTB } from '../../../utils/constants';
 import { getFTBModpackVersionData } from '../../../api';
+import { translate } from '../../../../../public/i18n';
 
 const selectFTBModpack = async (modpack, setVersion, setModpack, setStep) => {
   const projectID = modpack.id;
@@ -112,7 +113,7 @@ const ModpacksListWrapper = ({
               selectFTBModpack(modpack, setVersion, setModpack, setStep);
             }}
           >
-            Download Latest
+            Télécharger
           </div>
           <div
             onClick={() => {
@@ -127,7 +128,7 @@ const ModpacksListWrapper = ({
               );
             }}
           >
-            Explore / Versions
+            {translate('addInstance:ftb_modpacks.index.explore_versions')}
           </div>
         </ModpackHover>
       </div>

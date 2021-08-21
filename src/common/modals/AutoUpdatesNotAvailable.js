@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import styled from 'styled-components';
 import Modal from '../components/Modal';
+import { translate } from '../../../public/i18n';
 
 const AutoUpdatesNotAvailable = () => {
   return (
@@ -9,17 +10,19 @@ const AutoUpdatesNotAvailable = () => {
         height: 200px;
         width: 400px;
       `}
-      title="Auto Updates Not Available"
+      title={translate('autoUpdateNotAvailable:auto_update_not_available')}
     >
       <Container>
-        <div>Auto updates are not available on this platform.</div>
+        <div>{translate('autoUpdateNotAvailable:not_available_on_this_platform')}</div>
         <div
           css={`
             margin-top: 20px;
           `}
         >
-          Please, update GDLauncher through your package manager or download the
-          new version from our website <a href="https://gdevs.io">here</a>
+          {translate(
+            'autoUpdateNotAvailable:auto_update_not_available_description'
+          )}{' '}
+          <a href="https://gdevs.io">here</a>
         </div>
       </Container>
     </Modal>

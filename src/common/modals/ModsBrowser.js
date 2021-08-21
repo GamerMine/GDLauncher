@@ -31,6 +31,7 @@ import {
   filterForgeFilesByVersion,
   getPatchedInstanceType
 } from '../../app/desktop/utils';
+import { translate } from '../../../public/i18n';
 
 const RowContainer = styled.div`
   display: flex;
@@ -222,7 +223,7 @@ const ModsListWrapper = ({
                   );
                 }}
               >
-                Explore
+                {translate('modsBrowser:explore')}
               </Button>
               <Button
                 type="primary"
@@ -286,7 +287,7 @@ const ModsListWrapper = ({
                 }}
                 loading={loading}
               >
-                Install
+                {translate('modsBrowser:install')}
               </Button>
             </div>
           )
@@ -305,7 +306,7 @@ const ModsListWrapper = ({
               );
             }}
           >
-            Change version / explore
+            {translate('modsBrowser:change_version')}
           </Button>
         )}
       </RowContainer>
@@ -364,7 +365,7 @@ const ModsBrowser = ({ instanceName, gameVersion }) => {
 
   const [mods, setMods] = useState([]);
   const [areModsLoading, setAreModsLoading] = useState(true);
-  const [filterType, setFilterType] = useState('Featured');
+  const [filterType, setFilterType] = useState('En vedette');
   const [searchQuery, setSearchQuery] = useState('');
   const [hasNextPage, setHasNextPage] = useState(false);
   const [error, setError] = useState(false);
@@ -440,7 +441,7 @@ const ModsBrowser = ({ instanceName, gameVersion }) => {
         width: 90%;
         max-width: 1500px;
       `}
-      title="Instance Manager"
+      title={translate('modsBrowser:instance_manager')}
     >
       <Container>
         <Header>
@@ -454,18 +455,30 @@ const ModsBrowser = ({ instanceName, gameVersion }) => {
             disabled={areModsLoading}
             virtual={false}
           >
-            <Select.Option value="Featured">Featured</Select.Option>
-            <Select.Option value="Popularity">Popularity</Select.Option>
-            <Select.Option value="LastUpdated">Last Updated</Select.Option>
-            <Select.Option value="Name">Name</Select.Option>
-            <Select.Option value="Author">Author</Select.Option>
-            <Select.Option value="TotalDownloads">Downloads</Select.Option>
+            <Select.Option value="Featured">
+              {translate('modsBrowser:featured')}
+            </Select.Option>
+            <Select.Option value="Popularity">
+              {translate('modsBrowser:popularity')}
+            </Select.Option>
+            <Select.Option value="LastUpdated">
+              {translate('modsBrowser:last_updated')}
+            </Select.Option>
+            <Select.Option value="Name">
+              {translate('modsBrowser:name')}
+            </Select.Option>
+            <Select.Option value="Author">
+              {translate('modsBrowser:author')}
+            </Select.Option>
+            <Select.Option value="TotalDownloads">
+              {translate('modsBrowser:total_downloads')}
+            </Select.Option>
           </Select>
           <Input
             css={`
               height: 32px !important;
             `}
-            placeholder="Search for a mod"
+            placeholder={translate('modsBrowser:search_mod')}
             value={searchQuery}
             onChange={e => {
               setSearchQuery(e.target.value);
@@ -493,7 +506,7 @@ const ModsBrowser = ({ instanceName, gameVersion }) => {
                   margin-top: 70px;
                 `}
               >
-                No mods has been found with the current filters.
+                {translate('modsBrowser:no_mod_found')}
               </div>
             </div>
           ) : (
@@ -532,7 +545,7 @@ const ModsBrowser = ({ instanceName, gameVersion }) => {
                 margin-top: 70px;
               `}
             >
-              An error occurred while loading the mods list...
+              {translate('modsBrowser:error_occurred')}
             </div>
           </div>
         )}

@@ -15,6 +15,7 @@ import fse from 'fs-extra';
 import curseForgeIcon from '../../assets/curseforgeIcon.webp';
 import { _getInstancesPath } from '../../utils/selectors';
 import DragnDropEffect from '../../../ui/DragnDropEffect';
+import { translate } from '../../../../public/i18n';
 
 const Header = styled.div`
   height: 40px;
@@ -360,7 +361,7 @@ const ResourcePacks = ({ instanceName }) => {
                 : setSelectedItems([])
             }
           >
-            Select All
+            {translate('instanceManager:resource_pack.select_all')}
           </Checkbox>
           <TrashIcon
             selectedMods={selectedItems.length}
@@ -396,7 +397,7 @@ const ResourcePacks = ({ instanceName }) => {
             openFolderDialog();
           }}
         >
-          Add ResourcePack
+          {translate('instanceManager:resource_pack.add_resource_pack')}
         </Button>
       </Header>
 
@@ -406,7 +407,11 @@ const ResourcePacks = ({ instanceName }) => {
         fileList={resourcePacks}
       >
         {resourcePacks.length === 0 && (
-          <NotItemsAvailable>No ResourcePacks Available</NotItemsAvailable>
+          <NotItemsAvailable>
+            {translate(
+              'instanceManager:resource_pack.no_resource_pack_available'
+            )}
+          </NotItemsAvailable>
         )}
         <AutoSizer>
           {({ height, width }) => (

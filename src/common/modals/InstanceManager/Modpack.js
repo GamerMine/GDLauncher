@@ -12,6 +12,7 @@ import {
 } from '../../api';
 import { changeModpackVersion } from '../../reducers/actions';
 import { closeModal } from '../../reducers/modals/actions';
+import { translate } from '../../../../public/i18n';
 
 const Modpack = ({ modpackId, instanceName, manifest, fileID }) => {
   const [files, setFiles] = useState([]);
@@ -127,7 +128,7 @@ const Modpack = ({ modpackId, instanceName, manifest, fileID }) => {
   const handleChange = value => setSelectedIndex(value);
   return (
     <Container>
-      Installed version: {versionName}
+      {translate('instanceManager:modpack.installed_version')} {versionName}
       <div
         css={`
           display: flex;
@@ -135,7 +136,11 @@ const Modpack = ({ modpackId, instanceName, manifest, fileID }) => {
         `}
       >
         <StyledSelect
-          placeholder={loading ? 'Loading Versions' : 'Select a version'}
+          placeholder={
+            loading
+              ? translate('instanceManager:modpack.loading_versions')
+              : translate('instanceManager:modpack.select_version')
+          }
           onChange={handleChange}
           listItemHeight={50}
           listHeight={400}
@@ -209,7 +214,7 @@ const Modpack = ({ modpackId, instanceName, manifest, fileID }) => {
           dispatch(closeModal());
         }}
       >
-        Switch Version
+        {translate('instanceManager:modpack.change_version')}
       </Button>
     </Container>
   );

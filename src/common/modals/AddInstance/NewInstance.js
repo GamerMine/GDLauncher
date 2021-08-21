@@ -5,6 +5,7 @@ import { Cascader } from 'antd';
 import styled from 'styled-components';
 import { getFilteredVersions } from '../../../app/desktop/utils';
 import { FABRIC, FORGE, VANILLA } from '../../utils/constants';
+import { translate } from '../../../../public/i18n';
 
 const NewInstance = ({ setVersion, setModpack }) => {
   const vanillaManifest = useSelector(state => state.app.vanillaManifest);
@@ -36,7 +37,7 @@ const NewInstance = ({ setVersion, setModpack }) => {
             });
           setModpack(null);
         }}
-        placeholder="Select a version"
+        placeholder={translate('addInstance:new_instance.select_a_version')}
         size="large"
         css={`
           width: 400px;

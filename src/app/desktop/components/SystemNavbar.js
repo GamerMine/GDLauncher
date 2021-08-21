@@ -20,6 +20,7 @@ import {
 } from '../../../common/reducers/actions';
 import BisectHosting from '../../../ui/BisectHosting';
 import Logo from '../../../ui/Logo';
+import { translate } from '../../../../public/i18n';
 
 const SystemNavbar = () => {
   const dispatch = useDispatch();
@@ -191,7 +192,7 @@ const SystemNavbar = () => {
                 white-space: nowrap;
               `}
             >
-              Partnered with &nbsp;&nbsp;
+              {translate('systemNavbar:partnered_with')} &nbsp;&nbsp;
             </div>
             <BisectHosting
               showPointerCursor
@@ -280,7 +281,7 @@ const SystemNavbar = () => {
               height: 100%;
             `}
           >
-            Partnered with &nbsp;&nbsp;
+            {translate('systemNavbar:partnered_with')} &nbsp;&nbsp;
             <BisectHosting
               showPointerCursor
               onClick={() => dispatch(openModal('BisectHosting'))}

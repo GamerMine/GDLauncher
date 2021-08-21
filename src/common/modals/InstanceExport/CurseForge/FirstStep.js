@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { faFolder } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ContinueButton from './ContinueButton';
+import { translate } from '../../../../../public/i18n';
 
 const InlineBlock = styled.span`
   display: inline-block;
@@ -116,7 +117,11 @@ export default function FirstStep({
         ];
       }
       await setTreeData(
-        rootNode('Instance content', instancePath, mapObject(arr.children))
+        rootNode(
+          translate('instanceExport:curse_forge.first_step.instance_content'),
+          instancePath,
+          mapObject(arr.children)
+        )
       );
       await setSelectedFiles(flatDirArray(arr.children));
     };
@@ -183,7 +188,7 @@ export default function FirstStep({
                       `}
                     >
                       <InlineBlock>
-                        <h3>Name</h3>
+                        <h3>Nom</h3>
                       </InlineBlock>
                       <span>
                         <Input
@@ -231,7 +236,7 @@ export default function FirstStep({
                       `}
                     >
                       <InlineBlock>
-                        <h3>Author</h3>
+                        <h3>Auteur</h3>
                       </InlineBlock>
                       <span
                         css={`

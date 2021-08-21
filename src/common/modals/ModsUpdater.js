@@ -6,6 +6,7 @@ import Modal from '../components/Modal';
 import { updateMod } from '../reducers/actions';
 import { closeModal } from '../reducers/modals/actions';
 import { _getInstance } from '../utils/selectors';
+import { translate } from '../../../public/i18n';
 
 const ModsUpdater = ({ instanceName }) => {
   const dispatch = useDispatch();
@@ -69,10 +70,10 @@ const ModsUpdater = ({ instanceName }) => {
         height: 160px;
         width: 350px;
       `}
-      title="Mods Updater"
+      title={translate('modsUpdater:mods_updater')}
     >
       <Container>
-        Updating mod {computedMods} / {totalMods.length}
+        {translate('modsUpdater:updating_mod')} {computedMods} / {totalMods.length}
         {installProgress !== null && (
           <Progress percent={parseInt(installProgress, 10)} />
         )}

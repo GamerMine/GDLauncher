@@ -1,0 +1,15 @@
+{
+  "explore": "Explorer",
+  "install": "Installer",
+  "change_version": "Changer de version / explorer",
+  "instance_manager": "Gestionnaire d'instance",
+  "featured": "En vedette",
+  "popularity": "Popularitée",
+  "last_updated": "Dernière mise à jour",
+  "name": "Nom",
+  "author": "Auteur",
+  "total_downloads": "Nombre de téléchargements",
+  "search_mod": "Rechercher un mod",
+  "no_mod_found": "Aucun mod n'as été trouvé avec les filtres actuelles.",
+  "error_occurred": "Une erreur s'est produite lors du chargement de la liste des mods..."
+}

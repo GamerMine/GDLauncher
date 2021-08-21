@@ -30,6 +30,7 @@ import { openModal } from '../../../../common/reducers/modals/actions';
 import instanceDefaultBackground from '../../../../common/assets/instance_default.png';
 import { convertMinutesToHumanTime } from '../../../../common/utils';
 import { FABRIC, FORGE, VANILLA } from '../../../../common/utils/constants';
+import { translate } from '../../../../../public/i18n';
 
 const Container = styled.div`
   position: relative;
@@ -283,8 +284,8 @@ const Instance = ({ instanceName }) => {
                     {!isPlaying.initialized && <div className="spinner" />}
                   </div>
                 )}
-                {isInQueue && 'In Queue'}
-                {!isInQueue && !isPlaying && 'PLAY'}
+                {isInQueue && translate('instance:play')}
+                {!isInQueue && !isPlaying && translate('instance:play')}
               </>
             )}
           </HoverContainer>
@@ -305,7 +306,7 @@ const Instance = ({ instanceName }) => {
                   margin-right: 10px;
                 `}
               />
-              Kill
+              {translate('instance:kill')}
             </MenuItem>
           )}
           <MenuItem disabled={Boolean(isInQueue)} onClick={manageInstance}>
@@ -315,7 +316,7 @@ const Instance = ({ instanceName }) => {
                 margin-right: 10px;
               `}
             />
-            Manage
+            {translate('instance:manage')}
           </MenuItem>
           <MenuItem onClick={openFolder}>
             <FontAwesomeIcon
@@ -324,7 +325,7 @@ const Instance = ({ instanceName }) => {
                 margin-right: 10px;
               `}
             />
-            Open Folder
+            {translate('instance:open_folder')}
           </MenuItem>
 
           {/* // TODO - Support other export options besides curseforge forge. */}
@@ -346,7 +347,7 @@ const Instance = ({ instanceName }) => {
                 width: 16px !important;
               `}
             />
-            Export Pack
+            {translate('instance:export_pack')}
           </MenuItem>
           <MenuItem
             disabled={Boolean(isInQueue)}
@@ -371,7 +372,7 @@ const Instance = ({ instanceName }) => {
                 margin-right: 10px;
               `}
             />
-            Delete
+            {translate('instance:delete')}
           </MenuItem>
         </ContextMenu>
       </Portal>

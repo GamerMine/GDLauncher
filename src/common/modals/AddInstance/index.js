@@ -2,6 +2,7 @@
 import React, { useState, lazy, Suspense } from 'react';
 import Modal from '../../components/Modal';
 import AsyncComponent from '../../components/AsyncComponent';
+import { translate } from '../../../../public/i18n';
 
 const InstanceName = AsyncComponent(lazy(() => import('./InstanceName')));
 const Content = AsyncComponent(lazy(() => import('./Content')));
@@ -21,7 +22,7 @@ const AddInstance = ({ defaultPage }) => {
         max-width: 1000px;
         overflow: hidden;
       `}
-      title="Add New Instance"
+      title={translate('addInstance:index.add_new_instance')}
     >
       <Suspense>
         <Content

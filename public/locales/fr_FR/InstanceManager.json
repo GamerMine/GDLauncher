@@ -1,0 +1,66 @@
+{
+  "index": {
+    "overview": "Vu de d'ensemble",
+    "mods": "Mods",
+    "modpack": "Modpack",
+    "notes": "Notes",
+    "resource_pack": "Pack de textures",
+    "screenshots": "Captures d'écran",
+    "instance_manager": "Gestionnaire d'instance",
+    "change_icon": "Changer l'icône"
+  },
+  "modpack": {
+    "select_version": "Sélectionnez une version",
+    "loading_versions": "Chargement des versions",
+    "change_version": "Changer de version",
+    "installed_version": "Version installée :"
+  },
+  "mods": {
+    "copy_name": "Copier le nom",
+    "select_all": "Sélectionner tout",
+    "add_mod": "Ajouter un mod",
+    "search_in": "Chercher dans",
+    "mods": "mods",
+    "update_all_mods": "Mettre tout les mods à jour"
+  },
+  "notes": {
+    "enter_some_notes": "Entrez quelques notes..."
+  },
+  "overview": {
+    "minecraft_version": "Version Minecraft",
+    "modloader": "Modloader",
+    "modloader_version": "Version du Modloader",
+    "mods": "Mods",
+    "played_time": "Temps joué",
+    "last_played": "Joué pour la dernière fois",
+    "curse_modpack": "Modpack Curse",
+    "rename": "Renommer",
+    "override_game_resolution": "Outrepasser la résolution du jeu",
+    "width": "Largeur",
+    "height": "Hauteur",
+    "presets": "Presets",
+    "override_java_memory": "Outrepasser la mémoire Java",
+    "override_java_arguments": "Outrepasser les arguments Java",
+    "custom_java_path": "Chemin de Java personnalisé"
+  },
+  "resource_pack": {
+    "select_all": "Tout sélectionner",
+    "add_resource_pack": "Ajouter un pack de tectures",
+    "no_resource_pack_available": "Pas de packs de textures disponible"
+  },
+  "screenshots": {
+    "image_copied_to_clipboard": "Image copié dans le presse papier",
+    "busy_wait_before_uploading_another_image": "Occupé ! Attendez avant d'envoyer une autre image",
+    "share_the_image_via_url": "Partager l'image via un url",
+    "selected": "sélectionné",
+    "are_you_sure": "Etes-vous sûr de vouloir supprimer ces images ?",
+    "confirm": "Confirmer",
+    "delete": "Supprimer",
+    "items": "élements",
+    "delete_all": "Tout supprimer",
+    "preview": "Prévisualiser",
+    "copy_the_image": "Copier l'image",
+    "image_too_big": "Image trop grosse...",
+    "no_screenshots_available": "Pas de captures d'écran disponible"
+  }
+}

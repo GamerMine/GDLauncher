@@ -4,6 +4,7 @@ import { Transition } from 'react-transition-group';
 import styled from 'styled-components';
 import BackButton from './BackButton';
 import ContinueButton from './ContinueButton';
+import { translate } from '../../../../../public/i18n';
 
 export default function SecondStep({
   setSelectedFiles,
@@ -54,7 +55,7 @@ export default function SecondStep({
                   height: calc(100% - 40px);
                 `}
               >
-                <h2>Files to include in export</h2>
+                <h2>{translate('instanceExport:curse_forge.second_step.files_to_include_in_export')}</h2>
                 <div
                   css={`
                     overflow-y: auto;

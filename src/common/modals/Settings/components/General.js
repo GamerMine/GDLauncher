@@ -30,12 +30,14 @@ import {
   updateHideWindowOnGameLaunch,
   updatePotatoPcMode,
   updateShowNews,
-  updateCurseReleaseChannel
+  updateCurseReleaseChannel,
+  updateLanguage
 } from '../../../reducers/settings/actions';
 import HorizontalLogo from '../../../../ui/HorizontalLogo';
 import { updateConcurrentDownloads } from '../../../reducers/actions';
 import { openModal } from '../../../reducers/modals/actions';
 import { extractFace } from '../../../../app/desktop/utils';
+import { translate } from '../../../../../public/i18n';
 
 const MyAccountPrf = styled.div`
   width: 100%;
@@ -115,6 +117,29 @@ const Hr = styled.div`
 `;
 
 const ReleaseChannel = styled.div`
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 100%;
+  height: 90px;
+  color: ${props => props.theme.palette.text.third};
+  p {
+    margin-bottom: 7px;
+    color: ${props => props.theme.palette.text.secondary};
+  }
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  select {
+    margin-left: auto;
+    self-align: end;
+  }
+`;
+
+const Language = styled.div`
   display: flex;
   flex-direction: column;
   text-align: left;
@@ -222,6 +247,8 @@ const General = () => {
   const concurrentDownloads = useSelector(
     state => state.settings.concurrentDownloads
   );
+  const language = useSelector(state => state.settings.language);
+  const lastLanguage = useSelector(state => state.settings.language);
   const updateAvailable = useSelector(state => state.updateAvailable);
   const dataStorePath = useSelector(_getDataStorePath);
   const instancesPath = useSelector(_getInstancesPath);
@@ -320,10 +347,18 @@ const General = () => {
     setDataPath(filePaths[0]);
   };
 
+  const changeLanguageAndRestartApp = () => {
+    ipcRenderer.invoke('appRestart');
+  };
+
+  const cancelLanguageChange = () => {
+    dispatch(updateLanguage(lastLanguage));
+  };
+
   return (
     <MyAccountPrf>
       <PersonalData>
-        <MainTitle>General</MainTitle>
+        <MainTitle>{translate('general:general')}</MainTitle>
         <PersonalDataContainer>
           {profileImage ? (
             <ProfileImage src={`data:image/jpeg;base64,${profileImage}`} />
@@ -337,7 +372,7 @@ const General = () => {
             `}
           >
             <UsernameContainer>
-              Username <br />
+              {translate('general:username')} <br />
               <Username>{currentAccount.selectedProfile.name}</Username>
             </UsernameContainer>
             <UuidContainer>
@@ -345,7 +380,14 @@ const General = () => {
               <br />
               <Uuid>
                 {dashUuid(currentAccount.selectedProfile.id)}
-                <Tooltip title={copiedUuid ? 'Copied' : 'Copy'} placement="top">
+                <Tooltip
+                  title={
+                    copiedUuid
+                      ? translate('general:copied')
+                      : translate('general:copy')
+                  }
+                  placement="top"
+                >
                   <div
                     css={`
                       width: 13px;
@@ -371,16 +413,52 @@ const General = () => {
         </PersonalDataContainer>
       </PersonalData>
       <Hr />
-      <ReleaseChannel>
-        <Title>Release Channel</Title>
+      <Language>
+        <Title>{translate('general:language')}</Title>
         <div>
           <div
             css={`
               width: 400px;
             `}
           >
-            Stable updates once a month, beta does update more often but it may
-            have more bugs.
+            {translate('general:language_description')}
+          </div>
+          <Select
+            css={`
+              width: 100px;
+            `}
+            onChange={v => {
+              dispatch(
+                openModal('ActionConfirmation', {
+                  message: translate('general:confirm_language_change'),
+                  confirmCallback: changeLanguageAndRestartApp,
+                  abortCallback: cancelLanguageChange,
+                  title: translate('general:confirm')
+                })
+              );
+              dispatch(updateLanguage(v));
+            }}
+            value={language}
+            virtual={false}
+          >
+            <Select.Option value="en_US">
+              {translate('general:english')}
+            </Select.Option>
+            <Select.Option value="fr_FR">
+              {translate('general:french')}
+            </Select.Option>
+          </Select>
+        </div>
+      </Language>
+      <ReleaseChannel>
+        <Title>{translate('general:release_channel')}</Title>
+        <div>
+          <div
+            css={`
+              width: 400px;
+            `}
+          >
+            {translate('general:release_channel_description')}
           </div>
           <Select
             css={`
@@ -397,14 +475,17 @@ const General = () => {
             value={releaseChannel}
             virtual={false}
           >
-            <Select.Option value={0}>Stable</Select.Option>
-            <Select.Option value={1}>Beta</Select.Option>
+            <Select.Option value={0}>
+              {translate('general:stable')}
+            </Select.Option>
+            <Select.Option value={1}>{translate('general:beta')}</Select.Option>
           </Select>
         </div>
       </ReleaseChannel>
       <Hr />
       <Title>
-        Concurrent Downloads &nbsp; <FontAwesomeIcon icon={faTachometerAlt} />
+        {translate('general:concurrent_downloads')} &nbsp;{' '}
+        <FontAwesomeIcon icon={faTachometerAlt} />
       </Title>
       <ParallelDownload>
         <p
@@ -413,8 +494,7 @@ const General = () => {
             width: 400px;
           `}
         >
-          Select the number of concurrent downloads. If you have a slow
-          connection, select max 3
+          {translate('general:concurrent_downloads_description')}
         </p>
 
         <Select
@@ -437,7 +517,8 @@ const General = () => {
       </ParallelDownload>
       <Hr />
       <Title>
-        Preferred Curse Release Channel &nbsp; <FontAwesomeIcon icon={faFire} />
+        {translate('general:preferred_curse_release_channel')} &nbsp;{' '}
+        <FontAwesomeIcon icon={faFire} />
       </Title>
       <ParallelDownload>
         <p
@@ -446,8 +527,7 @@ const General = () => {
             width: 400px;
           `}
         >
-          Select the preferred release channel for downloading Curse projects.
-          This also applies for mods update.
+          {translate('general:preferred_curse_release_channel_description')}
         </p>
         <Select
           css={`
@@ -458,9 +538,9 @@ const General = () => {
           value={curseReleaseChannel}
           virtual={false}
         >
-          <Select.Option value={1}>Stable</Select.Option>
-          <Select.Option value={2}>Beta</Select.Option>
-          <Select.Option value={3}>Alpha</Select.Option>
+          <Select.Option value={1}>{translate('general:stable')}</Select.Option>
+          <Select.Option value={2}>{translate('general:beta')}</Select.Option>
+          <Select.Option value={3}>{translate('general:alpha')}</Select.Option>
         </Select>
       </ParallelDownload>
       <Hr />
@@ -469,7 +549,8 @@ const General = () => {
           margin-top: 0px;
         `}
       >
-        Discord Integration &nbsp; <FontAwesomeIcon icon={faDiscord} />
+        {translate('general:discord_integration')} &nbsp;{' '}
+        <FontAwesomeIcon icon={faDiscord} />
       </Title>
       <DiscordRpc>
         <p
@@ -477,8 +558,7 @@ const General = () => {
             width: 350px;
           `}
         >
-          Enable / disable Discord Integration. This displays what you are
-          playing in Discord.
+          {translate('general:discord_integration_description')}
         </p>
         <Switch
           onChange={e => {
@@ -498,7 +578,8 @@ const General = () => {
           margin-top: 0px;
         `}
       >
-        Minecraft News &nbsp; <FontAwesomeIcon icon={faNewspaper} />
+        {translate('general:minecraft_news')} &nbsp;{' '}
+        <FontAwesomeIcon icon={faNewspaper} />
       </Title>
       <DiscordRpc>
         <p
@@ -506,7 +587,7 @@ const General = () => {
             width: 350px;
           `}
         >
-          Enable / disable Minecraft news.
+          {translate('general:minecraft_news_description')}
         </p>
         <Switch
           onChange={e => {
@@ -521,7 +602,8 @@ const General = () => {
           margin-top: 0px;
         `}
       >
-        Hide Launcher While Playing &nbsp; <FontAwesomeIcon icon={faPlay} />
+        {translate('general:hide_launcher_while_playing')} &nbsp;{' '}
+        <FontAwesomeIcon icon={faPlay} />
       </Title>
       <DiscordRpc
         css={`
@@ -533,8 +615,7 @@ const General = () => {
             width: 500px;
           `}
         >
-          Automatically hide the launcher when launching an instance. You will
-          still be able to open it from the icon tray
+          {translate('general:hide_launcher_while_playing_description')}
         </p>
         <Switch
           onChange={e => {
@@ -549,7 +630,8 @@ const General = () => {
           margin-top: 0px;
         `}
       >
-        Potato PC Mode &nbsp; <FontAwesomeIcon icon={faToilet} />
+        {translate('general:potato_pc_mode')} &nbsp;{' '}
+        <FontAwesomeIcon icon={faToilet} />
       </Title>
       <DiscordRpc
         css={`
@@ -561,8 +643,7 @@ const General = () => {
             width: 500px;
           `}
         >
-          You got a potato PC? Don&apos;t worry! We got you covered. Enable this
-          and all animations and special effects will be disabled
+          {translate('general:potato_pc_mode_description')}
         </p>
         <Switch
           onChange={e => {
@@ -578,7 +659,8 @@ const General = () => {
           float: left;
         `}
       >
-        Clear Shared Data&nbsp; <FontAwesomeIcon icon={faTrash} />
+        {translate('general:clear_shared_data')}&nbsp;{' '}
+        <FontAwesomeIcon icon={faTrash} />
       </Title>
       <div
         css={`
@@ -599,23 +681,22 @@ const General = () => {
             width: 500px;
           `}
         >
-          Deletes all the shared files between instances. Doing this will result
-          in the complete loss of the instances data
+          {translate('general:clear_shared_data_description')}
         </p>
         <Button
           onClick={() => {
             dispatch(
               openModal('ActionConfirmation', {
-                message: 'Are you sure you want to delete shared data?',
+                message: translate('general:confirm_data_deletion'),
                 confirmCallback: clearSharedData,
-                title: 'Confirm'
+                title: translate('general:confirm')
               })
             );
           }}
           disabled={disableInstancesActions}
           loading={deletingInstances}
         >
-          Clear
+          {translate('general:clear')}
         </Button>
       </div>
       <Hr />
@@ -627,10 +708,11 @@ const General = () => {
             float: left;
           `}
         >
-          User Data Path&nbsp; <FontAwesomeIcon icon={faFolder} />
+          {translate('general:user_data_path')}&nbsp;{' '}
+          <FontAwesomeIcon icon={faFolder} />
           <a
             css={`
-              margin-left: 30px;
+              margin-left: 0px;
             `}
             onClick={async () => {
               const appData = await ipcRenderer.invoke('getAppdataPath');
@@ -638,7 +720,7 @@ const General = () => {
               setDataPath(appDataPath);
             }}
           >
-            Reset Path
+            {translate('general:reset_path')}
           </a>
         </Title>
         <div
@@ -687,7 +769,7 @@ const General = () => {
             }
             loading={loadingMoveUserData}
           >
-            Apply & Restart
+            {translate('general:apply_and_restart')}
           </Button>
         </div>
         <div
@@ -702,7 +784,7 @@ const General = () => {
               setMoveUserData(e.target.checked);
             }}
           >
-            Copy current data to the new directory
+            {translate('general:copy_current_data_to_new_directory')}
           </Checkbox>
         </div>
       </CustomDataPathContainer>
@@ -731,8 +813,8 @@ const General = () => {
         </div>
         <p>
           {updateAvailable
-            ? 'There is an update available to be installed. Click on update to install it and restart the launcher'
-            : 'You’re currently on the latest version. We automatically check for updates and we will inform you whenever one is available'}
+            ? translate('general:update_available')
+            : translate('general:latest_update')}
         </p>
         <div
           css={`
@@ -752,7 +834,7 @@ const General = () => {
               `}
               type="primary"
             >
-              Update &nbsp;
+              {translate('general:update')} &nbsp;
               <FontAwesomeIcon icon={faDownload} />
             </Button>
           ) : (
@@ -763,7 +845,7 @@ const General = () => {
                 padding: 6px 8px;
               `}
             >
-              Up to date
+              {translate('general:up_to_date')}
             </div>
           )}
         </div>

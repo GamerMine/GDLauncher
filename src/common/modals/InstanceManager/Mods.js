@@ -31,6 +31,7 @@ import {
   updateMod
 } from '../../reducers/actions';
 import { openModal } from '../../reducers/modals/actions';
+import { translate } from '../../../../public/i18n';
 
 const Header = styled.div`
   height: 40px;
@@ -483,7 +484,7 @@ const Row = memo(({ index, style, data }) => {
                 margin-right: 10px;
               `}
             />
-            Copy Name
+            {translate('instanceManager:mods.copy_name')}
           </MenuItem>
         </ContextMenu>
       </Portal>
@@ -677,7 +678,7 @@ const Mods = ({ instanceName }) => {
         }}
         disabled={!hasModUpdates}
       >
-        Update all mods
+        {translate('instanceManager:mods.update_all_mods')}
       </Menu.Item>
     </Menu>
   );
@@ -709,7 +710,7 @@ const Mods = ({ instanceName }) => {
                 : setSelectedMods([])
             }
           >
-            Select All
+            {translate('instanceManager:mods.select_all')}
           </Checkbox>
           <DeleteSelectedMods
             onClick={async () => {
@@ -759,7 +760,7 @@ const Mods = ({ instanceName }) => {
             );
           }}
         >
-          Add Mod
+          {translate('instanceManager:mods.add_mod')}
         </Button>
         <Input
           allowClear
@@ -769,7 +770,9 @@ const Mods = ({ instanceName }) => {
           css={`
             width: 200px !important;
           `}
-          placeholder={`Search ${mods.length} mods`}
+          placeholder={`${translate('instanceManager:mods.search_in')} ${
+            mods.length
+          } ${translate('instanceManager:mods.mods')}`}
         />
       </Header>
       <div

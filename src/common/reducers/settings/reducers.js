@@ -80,6 +80,15 @@ function curseReleaseChannel(state = 1, action) {
   }
 }
 
+function language(state = 'en_US', action) {
+  switch (action.type) {
+    case ActionTypes.UPDATE_LANGUAGE:
+      return action.language;
+    default:
+      return state;
+  }
+}
+
 function minecraftSettings(
   state = { resolution: { height: 480, width: 854 } },
   action
@@ -129,6 +138,7 @@ export default combineReducers({
   potatoPcMode,
   showNews,
   curseReleaseChannel,
+  language,
   java,
   minecraftSettings
 });

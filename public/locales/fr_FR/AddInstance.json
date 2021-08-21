@@ -1,0 +1,57 @@
+{
+  "index": {
+    "add_new_instance": "Ajouter une nouvelle instance"
+  },
+  "content": {
+    "vanilla": "Vanilla",
+    "import_zip": "Importer un Zip"
+  },
+  "import": {
+    "local_file_or_link_to_a_direct_download": "Fichier local ou lien",
+    "choose": "Choisir",
+    "there_was_an_issue_while_importing": "Il y'a eu une erreur lors de l'importation"
+  },
+  "instance_name": {
+    "low_memory_warning": "Avertissement de mémoire faible",
+    "at_least": "Au moins",
+    "low_memory_warning_desc1": "MB de RAM est nécessaire pour jouer à ce modpack et vous avez seulement ",
+    "low_memory_warning_desc2": "MB. Vous pouvez peut-être y jouer mais avec des performances faible. Voulez vous continuer ?",
+    "instance_name_not_valid": "Le nom de l'instance n'est pas valide ou est trop long.",
+    "instance_already_exist": "Une instance avec ce nom existe déjà !"
+  },
+  "new_instance": {
+    "select_a_version": "Sélectionnez une version"
+  },
+  "curse_forge_modpack": {
+    "index": {
+      "minecraft_version": "Version Minecraft",
+      "all_versions": "Toute les versions",
+      "minecraft_category": "Catégorie Minecraft",
+      "all_categories": "Toutes les catégories",
+      "sort_by": "Filtrer par...",
+      "featured": "En vedette",
+      "popularity": "Popularité",
+      "last_updated": "Dernière mise à jour",
+      "name": "Nom",
+      "author": "Auteur",
+      "total_downloads": "Téléchargements total",
+      "search": "Rechercher...",
+      "no_modpack_found": "Aucun modpack n'as été trouvé avec les filtres actuelles.",
+      "error_loading_modpack_list": "Une erreur s'est produite lors du chargement de la liste des modpacks..."
+    },
+    "modpack_list_wrapper": {
+      "download_latest": "Télécharger",
+      "explore_versions": "Explorer / Versions"
+    }
+  },
+  "ftb_modpacks": {
+    "index": {
+      "search": "Rechercher...",
+      "no_modpack_found": "Aucun modpack n'as été trouvé avec les filtres actuelles.",
+      "error_downloading_modpack_list": "Une erreur s'est produite lors du chargement de la liste des modpacks..."
+    },
+    "modpacks_list_wrapper": {
+      "explore_versions": "Explorer / Versions"
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "index": {
+    "add_new_instance": "Add New Instance"
+  },
+  "content": {
+    "vanilla": "Vanilla",
+    "import_zip": "Import Zip"
+  },
+  "import": {
+    "local_file_or_link_to_a_direct_download": "Local file or link to a direct download",
+    "choose": "Choose",
+    "there_was_an_issue_while_importing": "There was an issue while importing."
+  },
+  "instance_name": {
+    "low_memory_warning": "Low Memory Warning",
+    "at_least": "At least",
+    "low_memory_warning_desc1": "MB of RAM are required to play this modpack and you only have ",
+    "low_memory_warning_desc2": "MB. You might still be able to play it but probably with low performance. Do you want to continue?",
+    "instance_name_not_valid": "Instance name is not valid or too long. Please try another one",
+    "instance_already_exist": "An instance with this name already exists!"
+  },
+  "new_instance": {
+    "select_a_version": "Select a version"
+  },
+  "curse_forge_modpack": {
+    "index": {
+      "minecraft_version": "Minecraft Version",
+      "all_versions": "All Versions",
+      "minecraft_category": "Minecraft Category",
+      "all_categories": "All Categories",
+      "sort_by": "Sort by...",
+      "featured": "Featured",
+      "popularity": "Popularity",
+      "last_updated": "Last Updated",
+      "name": "Name",
+      "author": "Author",
+      "total_downloads": "Total Downloads",
+      "search": "Search...",
+      "no_modpack_found": "No modpack has been found with the current filters.",
+      "error_loading_modpack_list": "An error occurred while loading the modpacks list..."
+    },
+    "modpack_list_wrapper": {
+      "download_latest": "Download",
+      "explore_versions": "Explore / Versions"
+    }
+  },
+  "ftb_modpacks": {
+    "index": {
+      "search": "Search...",
+      "no_modpack_found": "No modpack has been found with the current filters.",
+      "error_downloading_modpack_list": "An error occurred while loading the modpacks list..."
+    },
+    "modpacks_list_wrapper": {
+      "explore_versions": "Explore / Versions"
+    }
+  }
+}

@@ -1110,12 +1110,15 @@ export function addToQueue(
 }
 
 export function addNextInstanceToCurrentDownload() {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     const { downloadQueue } = getState();
     const queueArr = Object.keys(downloadQueue);
     if (queueArr.length > 0) {
       dispatch(updateCurrentDownload(queueArr[0]));
       dispatch(downloadInstance(queueArr[0]));
+    } else {
+      await ipcRenderer.invoke('update-details-discord-rpc', 'GDLauncher');
+      await ipcRenderer.invoke('update-state-discord-rpc', 'En attente');
     }
   };
 }
@@ -1125,7 +1128,12 @@ export function downloadFabric(instanceName) {
     const state = getState();
     const { loader } = _getCurrentDownloadItem(state);
 
-    dispatch(updateDownloadStatus(instanceName, 'Downloading fabric files...'));
+    dispatch(
+      updateDownloadStatus(
+        instanceName,
+        'Téléchargement des fichiers fabric...'
+      )
+    );
 
     let fabricJson;
     const fabricJsonPath = path.join(
@@ -1240,7 +1248,10 @@ export function downloadForge(instanceName) {
         'No installer found in temp or hash mismatch. Need to download it.'
       );
       dispatch(
-        updateDownloadStatus(instanceName, 'Downloading forge installer...')
+        updateDownloadStatus(
+          instanceName,
+          "Téléchargement de l'installateur forge..."
+        )
       );
 
       let urlTerminal = 'installer.jar';
@@ -1339,7 +1350,10 @@ export function downloadForge(instanceName) {
       }
 
       dispatch(
-        updateDownloadStatus(instanceName, 'Downloading forge libraries...')
+        updateDownloadStatus(
+          instanceName,
+          'Téléchargement des libraries de forge...'
+        )
       );
 
       let { libraries } = forgeJson.version;
@@ -1376,7 +1390,9 @@ export function downloadForge(instanceName) {
 
       // Patching
       if (forgeJson.install?.processors?.length) {
-        dispatch(updateDownloadStatus(instanceName, 'Patching forge...'));
+        dispatch(
+          updateDownloadStatus(instanceName, 'Configuration de forge...')
+        );
 
         // Extract client.lzma from installer
 
@@ -1456,7 +1472,7 @@ export function downloadForge(instanceName) {
         { concurrency: state.settings.concurrentDownloads }
       );
 
-      dispatch(updateDownloadStatus(instanceName, 'Injecting forge...'));
+      dispatch(updateDownloadStatus(instanceName, 'Injection de forge...'));
       dispatch(updateDownloadProgress(0));
 
       // Perform forge injection
@@ -1559,7 +1575,9 @@ export function processFTBManifest(instanceName) {
       };
     });
 
-    dispatch(updateDownloadStatus(instanceName, 'Downloading FTB files...'));
+    dispatch(
+      updateDownloadStatus(instanceName, 'Téléchargement des fichiers FTB...')
+    );
     await downloadInstanceFiles(
       mappedFiles,
       updatePercentage,
@@ -1671,7 +1689,7 @@ export function processForgeManifest(instanceName) {
     const { manifest } = _getCurrentDownloadItem(state);
     const concurrency = state.settings.concurrentDownloads;
 
-    dispatch(updateDownloadStatus(instanceName, 'Downloading mods...'));
+    dispatch(updateDownloadStatus(instanceName, 'Téléchargement des mods...'));
 
     let modManifests = [];
     await pMap(
@@ -1815,7 +1833,18 @@ export function downloadInstance(instanceName) {
       }
     } = state;
 
-    dispatch(updateDownloadStatus(instanceName, 'Downloading game files...'));
+    await ipcRenderer.invoke('update-details-discord-rpc', 'GDLauncher');
+    await ipcRenderer.invoke(
+      'update-state-discord-rpc',
+      "Téléchargement d'une instance"
+    );
+
+    dispatch(
+      updateDownloadStatus(
+        instanceName,
+        'Téléchargement des fichiers du jeu...'
+      )
+    );
 
     const { loader, manifest } = _getCurrentDownloadItem(state);
 
@@ -2105,7 +2134,7 @@ export const startListener = () => {
       if (queueLength > 1) {
         dispatch(
           updateMessage({
-            content: `Synchronizing mods. ${queueLength} left.`,
+            content: `Synchronisation des mods. ${queueLength} restant.`,
             duration: 0
           })
         );
@@ -2116,7 +2145,7 @@ export const startListener = () => {
       if (queueLength > 1) {
         dispatch(
           updateMessage({
-            content: `Synchronizing mods. ${queueLength} left.`,
+            content: `Synchronisation des mods. ${queueLength} restant.`,
             duration: 0
           })
         );
@@ -2765,6 +2794,13 @@ export function launchInstance(instanceName) {
       }
     );
 
+    await ipcRenderer.invoke('update-details-discord-rpc', `${instanceName}`);
+    await ipcRenderer.invoke('update-state-discord-rpc', 'En jeu');
+    await ipcRenderer.invoke(
+      'update-timestamp-discord-rpc',
+      Math.floor(Date.now() / 1000)
+    );
+
     const playTimer = setInterval(() => {
       dispatch(
         updateInstanceConfig(instanceName, prev => ({
@@ -2795,6 +2831,12 @@ export function launchInstance(instanceName) {
     });
 
     ps.on('close', async code => {
+      await ipcRenderer.invoke('update-details-discord-rpc', 'GDLauncher');
+      await ipcRenderer.invoke('update-state-discord-rpc', 'En attente');
+      await ipcRenderer.invoke(
+        'update-timestamp-discord-rpc',
+        Math.floor(Date.now() / 1000)
+      );
       clearInterval(playTimer);
       if (!ps.killed) {
         ps.kill('SIGKILL');

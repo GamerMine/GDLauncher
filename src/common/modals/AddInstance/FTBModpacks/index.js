@@ -13,6 +13,7 @@ import {
   getFTBSearch
 } from '../../../api';
 import pMap from 'p-map';
+import { translate } from '../../../../../public/i18n';
 
 let lastRequest;
 const FTBModpacks = ({ setStep, setModpack, setVersion }) => {
@@ -84,7 +85,7 @@ const FTBModpacks = ({ setStep, setModpack, setVersion }) => {
     <Container>
       <HeaderContainer>
         <StyledInput
-          placeholder="Search..."
+          placeholder={translate('addInstance:ftb_modpacks.index.search')}
           onSearch={setSearchText}
           onChange={e => setSearchText(e.target.value)}
           style={{ width: 200 }}
@@ -109,7 +110,7 @@ const FTBModpacks = ({ setStep, setModpack, setVersion }) => {
                   margin-top: 70px;
                 `}
               >
-                No modpack has been found with the current filters.
+                {translate('addInstance:ftb_modpacks.index.no_modpack_found')}
               </div>
             </div>
           ) : (
@@ -147,7 +148,7 @@ const FTBModpacks = ({ setStep, setModpack, setVersion }) => {
                 margin-top: 70px;
               `}
             >
-              An error occurred while loading the modpacks list...
+              {translate('addInstance:ftb_modpacks.index.error_downloading_modpack_list')}
             </div>
           </div>
         )}

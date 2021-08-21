@@ -13,12 +13,14 @@ import {
 import { Input, Button } from 'antd';
 import { useKey } from 'rooks';
 import axios from 'axios';
+import i18n from 'i18next';
 import { login, loginOAuth } from '../../../common/reducers/actions';
 import { load, requesting } from '../../../common/reducers/loading/actions';
 import features from '../../../common/reducers/loading/features';
 import backgroundVideo from '../../../common/assets/background.webm';
 import HorizontalLogo from '../../../ui/HorizontalLogo';
 import { openModal } from '../../../common/reducers/modals/actions';
+import { translate } from '../../../../public/i18n';
 
 const LoginButton = styled(Button)`
   border-radius: 4px;
@@ -220,6 +222,8 @@ const Login = () => {
     fetchStatus().catch(console.error);
   }, []);
 
+  i18n.changeLanguage(useSelector(state => state.settings.language));
+
   return (
     <Transition in={loading} timeout={300}>
       {transitionState => (
@@ -228,17 +232,18 @@ const Login = () => {
             <Header>
               <HorizontalLogo size={200} />
             </Header>
+            <p>{translate('login:sign_in_with_your_mojang_account')}</p>
             <Form>
               <div>
                 <Input
-                  placeholder="Email"
+                  placeholder={translate('login:email')}
                   value={email}
                   onChange={({ target: { value } }) => setEmail(value)}
                 />
               </div>
               <div>
                 <Input
-                  placeholder="Password"
+                  placeholder={translate('login:password')}
                   type="password"
                   value={password}
                   onChange={({ target: { value } }) => setPassword(value)}
@@ -248,7 +253,7 @@ const Login = () => {
                 <LoginFailMessage>{loginFailed?.message}</LoginFailMessage>
               )}
               <LoginButton color="primary" onClick={authenticate}>
-                Sign In
+                {translate('login:sign_in')}
                 <FontAwesomeIcon
                   css={`
                     margin-left: 6px;
@@ -260,7 +265,7 @@ const Login = () => {
                 color="primary"
                 onClick={authenticateMicrosoft}
               >
-                Sign in with Microsoft
+                {translate('login:sign_in_with_microsoft')}
                 <FontAwesomeIcon
                   css={`
                     margin-left: 6px;
@@ -280,8 +285,13 @@ const Login = () => {
               >
                 <FooterLinks>
                   <div>
-                    <a href="https://www.minecraft.net/it-it/password/forgot">
-                      FORGOT PASSWORD
+                    <a href="https://my.minecraft.net/en-us/store/minecraft/#register">
+                      {translate('login:create_an_account')}
+                    </a>
+                  </div>
+                  <div>
+                    <a href="https://my.minecraft.net/en-us/password/forgot/">
+                      {translate('login:forgot_password')}
                     </a>
                   </div>
                 </FooterLinks>
@@ -353,7 +363,9 @@ const Login = () => {
               <source src={backgroundVideo} type="video/webm" />
             </video>
           </Background>
-          <Loading transitionState={transitionState}>Loading...</Loading>
+          <Loading transitionState={transitionState}>
+            {translate('login:loading')}
+          </Loading>
         </Container>
       )}
     </Transition>

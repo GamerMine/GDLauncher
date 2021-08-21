@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import Modal from '../components/Modal';
 import BisectHostingLogo from '../../ui/BisectHosting';
+import { translate } from '../../../public/i18n';
 
 const BisectHosting = () => {
   return (
@@ -15,7 +16,7 @@ const BisectHosting = () => {
         font-size: 10px;
         line-height: 1.8;
       `}
-      title="We teamed up with BisectHosting"
+      title={translate('bisectHosting:we_teamed_up')}
     >
       <Container>
         <BisectHostingLogo size={70} hover />
@@ -24,7 +25,7 @@ const BisectHosting = () => {
             margin-top: 20px;
           `}
         >
-          Grab a server from our official partner{' '}
+          {`${translate('bisectHosting:grab_a_server')} `}
           <span
             css={`
               font-weight: 800;
@@ -32,8 +33,12 @@ const BisectHosting = () => {
           >
             BisectHosting
           </span>{' '}
-          <span>for effortless modded server installs and updates.</span> New
-          customers can save{' '}
+          <span>
+            {translate(
+              'bisectHosting:for_effortless_modded_server_installs_and_updates'
+            )}
+          </span>{' '}
+          {`${translate('bisectHosting:customers_can_save')} `}
           <span
             css={`
               color: ${props => props.theme.palette.colors.green};
@@ -41,7 +46,9 @@ const BisectHosting = () => {
           >
             25%
           </span>{' '}
-          off their first month using the promo code{' '}
+          {`${translate(
+            'bisectHosting:off_their_first_month_using_the_promo_code'
+          )} `}
           <span
             css={`
               color: ${props => props.theme.palette.colors.green};
@@ -49,7 +56,7 @@ const BisectHosting = () => {
           >
             GDL
           </span>{' '}
-          at checkout.
+          {translate('bisectHosting:at_checkout')}
         </h2>
         <a href="https://bisecthosting.com/gdl">
           <Button
@@ -58,7 +65,7 @@ const BisectHosting = () => {
               margin-top: 25px;
             `}
           >
-            Go to BisectHosting.com &nbsp;
+            {translate('bisectHosting:go_to')} BisectHosting.com &nbsp;
             <FontAwesomeIcon icon={faExternalLinkAlt} />
           </Button>
         </a>

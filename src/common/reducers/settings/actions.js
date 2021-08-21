@@ -1,3 +1,4 @@
+import i18n from 'i18next';
 import * as ActionTypes from './actionTypes';
 
 export function updateSoundsSetting(sounds) {
@@ -103,6 +104,16 @@ export function updateCurseReleaseChannel(curseReleaseChannel) {
     dispatch({
       type: ActionTypes.UPDATE_CURSE_RELEASE_CHANNEL,
       curseReleaseChannel
+    });
+  };
+}
+
+export function updateLanguage(language) {
+  i18n.changeLanguage(language);
+  return dispatch => {
+    dispatch({
+      type: ActionTypes.UPDATE_LANGUAGE,
+      language
     });
   };
 }

@@ -30,6 +30,7 @@ import {
 import { _getInstancesPath } from '../../utils/selectors';
 import { openModal } from '../../reducers/modals/actions';
 import { imgurPost } from '../../api';
+import { translate } from '../../../../public/i18n';
 
 const getScreenshots = async screenshotsPath => {
   const files = await fs.readdir(screenshotsPath);
@@ -114,13 +115,13 @@ const Screenshots = ({ instanceName }) => {
       uploadingFileName !== null &&
       selectedItems.includes(uploadingFileName)
     ) {
-      return 'Image copied to clipboard!';
+      return translate('instanceManager:screenshots.image_copied_to_clipboard');
     } else if (
       uploadingFileName != null &&
       selectedItems[0] != uploadingFileName
     ) {
-      return 'Busy! Wait before uploading another image';
-    } else return 'Share the image via url';
+      return translate('instanceManager:screenshots.busy_wait_before_uploading_another_image');
+    } else return translate('instanceManager:screenshots.share_the_image_via_url');
   };
 
   const containerRef = useRef(null);
@@ -208,7 +209,7 @@ const Screenshots = ({ instanceName }) => {
             getScreenshotsCount(dateGroups) === selectedItems.length
           }
         >
-          {`${selectedItems.length} selected`}
+          {`${selectedItems.length} ${translate('instanceManager:screenshots.selected')}`}
         </GlobalCheckbox>
 
         <DeleteButton
@@ -216,9 +217,9 @@ const Screenshots = ({ instanceName }) => {
             if (selectedItems.length) {
               dispatch(
                 openModal('ActionConfirmation', {
-                  message: 'Are you sure you want to delete this image(s)?',
+                  message: translate('instanceManager:screenshots.are_you_sure'),
                   confirmCallback: deleteFile,
-                  title: 'Confirm'
+                  title: translate('instanceManager:screenshots.confirm')
                 })
               );
             }
@@ -306,16 +307,16 @@ const Screenshots = ({ instanceName }) => {
                               dispatch(
                                 openModal('ActionConfirmation', {
                                   message:
-                                    'Are you sure you want to delete this image?',
+                                    translate('instanceManager:screenshots.are_you_sure'),
                                   fileName: file.name,
                                   confirmCallback: deleteFile,
-                                  title: 'Confirm'
+                                  title: translate('instanceManager:screenshots.confirm')
                                 })
                               );
                             }}
                           >
                             <FontAwesomeIcon icon={faTrash} />
-                            {`Delete ${selectedItems.length} items`}
+                            {`${translate('instanceManager:screenshots.delete')} ${selectedItems.length} ${translate('instanceManager:screenshots.items')}`}
                           </MenuItem>
                         ) : (
                           selectedItems.length ===
@@ -326,16 +327,16 @@ const Screenshots = ({ instanceName }) => {
                                 dispatch(
                                   openModal('ActionConfirmation', {
                                     message:
-                                      'Are you sure you want to delete this image?',
+                                      translate('instanceManager:screenshots.are_you_sure'),
                                     fileName: file.name,
                                     confirmCallback: deleteFile,
-                                    title: 'Confirm'
+                                    title: translate('instanceManager:screenshots.confirm')
                                   })
                                 );
                               }}
                             >
                               <FontAwesomeIcon icon={faTrash} />
-                              Delete all
+                              {translate('instanceManager:screenshots.delete_all')}
                             </MenuItem>
                           )
                         )}
@@ -353,7 +354,7 @@ const Screenshots = ({ instanceName }) => {
                               }
                             >
                               <FontAwesomeIcon icon={faImage} />
-                              Preview
+                              {translate('instanceManager:screenshots.preview')}
                             </MenuItem>
                             <MenuItem
                               onClick={() => {
@@ -363,7 +364,7 @@ const Screenshots = ({ instanceName }) => {
                               }}
                             >
                               <FontAwesomeIcon icon={faCopy} />
-                              Copy the image
+                              {translate('instanceManager:screenshots.copy_the_image')}
                             </MenuItem>
                             <ImgurShareMenuItem
                               disabled={
@@ -397,7 +398,7 @@ const Screenshots = ({ instanceName }) => {
                                       uploadingFileName,
                                       selectedItems
                                     )
-                                  : `Image too big... ${Math.floor(
+                                  : `${translate('instanceManager:screenshots.image_too_big')} ${Math.floor(
                                       file.size / 1024 / 1024
                                     )}MB`}
                               </MenuShareLink>
@@ -417,16 +418,16 @@ const Screenshots = ({ instanceName }) => {
                                 dispatch(
                                   openModal('ActionConfirmation', {
                                     message:
-                                      'Are you sure you want to delete this image?',
+                                      translate('instanceManager:screenshots.are_you_sure'),
                                     fileName: file.name,
                                     confirmCallback: deleteFile,
-                                    title: 'Confirm'
+                                    title: translate('instanceManager:screenshots.confirm')
                                   })
                                 );
                               }}
                             >
                               <FontAwesomeIcon icon={faTrash} />
-                              Delete
+                              {translate('instanceManager:screenshots.delete')}
                             </MenuItem>
                           </>
                         )}
@@ -438,7 +439,7 @@ const Screenshots = ({ instanceName }) => {
             );
           })
         ) : (
-          <NoScreenAvailable>No Screenshot Available</NoScreenAvailable>
+          <NoScreenAvailable>{translate('instanceManager:screenshots.no_screenshots_available')}</NoScreenAvailable>
         )}
       </Container>
     </ExternalContainer>

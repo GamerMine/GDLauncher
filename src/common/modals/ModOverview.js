@@ -82,11 +82,11 @@ const ModOverview = ({
 
   const getPlaceholderText = () => {
     if (loadingFiles) {
-      return 'Loading files';
+      return 'Chargement des fichiers';
     } else if (files.length === 0 && !loadingFiles) {
-      return 'Mod not available';
+      return 'Le mod n\'est pas disponible' ;
     } else {
-      return 'Select a version';
+      return 'Sélectionnez une version';
     }
   };
 
@@ -149,21 +149,21 @@ const ModOverview = ({
                 {addon?.name}
                 <ParallaxContentInfos>
                   <div>
-                    <label>Author: </label>
+                    <label>Auteur: </label>
                     {addon?.authors[0].name}
                   </div>
                   {addon?.downloadCount && (
                     <div>
-                      <label>Downloads: </label>
+                      <label>Téléchargements: </label>
                       {formatNumber(addon?.downloadCount)}
                     </div>
                   )}
                   <div>
-                    <label>Last Update: </label>{' '}
+                    <label>Dernière mise à jour: </label>{' '}
                     {formatDate(addon?.dateModified)}
                   </div>
                   <div>
-                    <label>MC version: </label>
+                    <label>Version MC: </label>
                     {addon?.gameVersionLatestFiles[0]?.gameVersion}
                   </div>
                 </ParallaxContentInfos>
@@ -327,7 +327,7 @@ const ModOverview = ({
               setLoading(false);
             }}
           >
-            {installedData.fileID ? 'Switch Version' : 'Download'}
+            {installedData.fileID ? 'Changer de version' : 'Télécharger'}
           </Button>
         </Footer>
       </>

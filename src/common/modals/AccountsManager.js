@@ -17,6 +17,7 @@ import {
 import { load } from '../reducers/loading/actions';
 import features from '../reducers/loading/features';
 import { ACCOUNT_MICROSOFT } from '../utils/constants';
+import { translate } from '../../../public/i18n';
 
 const ProfileSettings = () => {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const ProfileSettings = () => {
         width: 400px;
         max-height: 700px;
       `}
-      title="Account Manager"
+      title={translate('accountsManager:account_manager')}
     >
       <Container>
         <AccountsContainer>
@@ -97,7 +98,7 @@ const ProfileSettings = () => {
                         )
                       }
                     >
-                      Login again
+                      {translate('accountsManager:login_again')}
                     </HoverContainer>
                   )}
                   {account.selectedProfile.id ===
@@ -134,7 +135,7 @@ const ProfileSettings = () => {
         </AccountsContainer>
         <AccountContainer>
           <AccountItem onClick={() => dispatch(openModal('AddAccount'))}>
-            Add Account
+            {translate('accountsManager:add_account')}
           </AccountItem>
         </AccountContainer>
       </Container>

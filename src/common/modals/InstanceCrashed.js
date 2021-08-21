@@ -7,6 +7,7 @@ import { faCopy } from '@fortawesome/free-solid-svg-icons';
 
 import Modal from '../components/Modal';
 import Logo from '../../ui/LogoSad';
+import { translate } from '../../../public/i18n';
 
 const calcError = code => {
   switch (code) {
@@ -53,14 +54,14 @@ const InstanceCrashed = ({ code, errorLogs }) => {
         height: 450px;
         width: 500px;
       `}
-      title="The instance could not be launched"
+      title={translate('instanceCrashed:instance_could_not_be_launched')}
     >
       <Container>
         <InnerContainer>
           <Logo size={100} />
           <h3>
             OOPSIE WOOPSIE!!
-            <br /> A creeper blew this instance up!
+            <br /> {translate('instanceCrashed:a_creeper_blew_this_instance_up')}
           </h3>
         </InnerContainer>
         <Card

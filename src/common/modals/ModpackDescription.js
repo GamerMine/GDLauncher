@@ -143,23 +143,23 @@ const ModpackDescription = ({
                 {modpack.name}
                 <ParallaxContentInfos>
                   <div>
-                    <label>Author: </label>
+                    <label>Auteur: </label>
                     {modpack.authors[0].name}
                   </div>
                   <div>
-                    <label>Downloads: </label>
+                    <label>Téléchargements: </label>
                     {type === 'ftb'
                       ? formatNumber(modpack.installs)
                       : formatNumber(modpack.downloadCount)}
                   </div>
                   <div>
-                    <label>Last Update: </label>
+                    <label>Dernière mise à jour: </label>
                     {type === 'ftb'
                       ? formatDate(modpack.refreshed * 1000)
                       : formatDate(modpack.dateModified)}
                   </div>
                   <div>
-                    <label>MC version: </label>
+                    <label>Version MC: </label>
                     {type === 'ftb'
                       ? modpack.tags[0]?.name || '-'
                       : modpack.gameVersionLatestFiles[0].gameVersion}
@@ -229,7 +229,7 @@ const ModpackDescription = ({
             `}
           >
             <StyledSelect
-              placeholder={loading ? 'Loading Versions' : 'Select a version'}
+              placeholder={loading ? 'Chargement des versions' : 'Sélectionnez une version'}
               onChange={handleChange}
               listItemHeight={50}
               listHeight={400}
@@ -321,7 +321,7 @@ const ModpackDescription = ({
               dispatch(closeModal());
             }}
           >
-            Download
+            Télecharger
           </Button>
         </Footer>
       </>

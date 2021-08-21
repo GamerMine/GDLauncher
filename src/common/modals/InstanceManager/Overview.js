@@ -31,6 +31,7 @@ import {
 import { openModal } from '../../reducers/modals/actions';
 import { convertMinutesToHumanTime } from '../../utils';
 import { CURSEFORGE } from '../../utils/constants';
+import { translate } from '../../../../public/i18n';
 
 const Container = styled.div`
   padding: 0 50px;
@@ -302,7 +303,7 @@ const Overview = ({ instanceName, background, manifest }) => {
           `}
         >
           <Card
-            title="Minecraft Version"
+            title={translate('instanceManager:overview.minecraft_version')}
             color={props => props.theme.palette.colors.jungleGreen}
             instanceName={instanceName}
             defaultValue={config?.loader}
@@ -311,7 +312,7 @@ const Overview = ({ instanceName, background, manifest }) => {
             {config?.loader?.mcVersion}
           </Card>
           <Card
-            title="Modloader"
+            title={translate('instanceManager:overview.modloader')}
             color={props => props.theme.palette.colors.darkYellow}
             instanceName={instanceName}
             defaultValue={config?.loader}
@@ -320,7 +321,7 @@ const Overview = ({ instanceName, background, manifest }) => {
             {config?.loader?.loaderType}
           </Card>
           <Card
-            title="Modloader Version"
+            title={translate('instanceManager:overview.modloader_version')}
             color={props => props.theme.palette.colors.lightBlue}
             instanceName={instanceName}
             defaultValue={config?.loader}
@@ -344,19 +345,19 @@ const Overview = ({ instanceName, background, manifest }) => {
           `}
         >
           <Card
-            title="Mods"
+            title={translate('instanceManager:overview.mods')}
             color={props => props.theme.palette.colors.maximumRed}
           >
             {config?.mods?.length || '-'}
           </Card>
           <Card
-            title="Played Time"
+            title={translate('instanceManager:overview.played_time')}
             color={props => props.theme.palette.colors.liberty}
           >
             {convertMinutesToHumanTime(config?.timePlayed)}
           </Card>
           <Card
-            title="Last Played"
+            title={translate('instanceManager:overview.last_played')}
             color={props => props.theme.palette.colors.orange}
           >
             {config?.lastPlayed ? computeLastPlayed(config?.lastPlayed) : '-'}
@@ -364,7 +365,7 @@ const Overview = ({ instanceName, background, manifest }) => {
         </OverviewCard>
         {config?.loader.source === CURSEFORGE && manifest && (
           <Card
-            title="Curse Modpack"
+            title={translate('instanceManager:overview.curse_modpack')}
             color={`linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), ${
               background
                 ? `url(${background})`
@@ -377,13 +378,15 @@ const Overview = ({ instanceName, background, manifest }) => {
         <RenameRow>
           <Input value={newName} onChange={e => setNewName(e.target.value)} />
           <RenameButton onClick={() => renameInstance()} type="primary">
-            Rename&nbsp;
+            {translate('instanceManager:overview.rename')}&nbsp;
             <FontAwesomeIcon icon={faSave} />
           </RenameButton>
         </RenameRow>
         <OverviewCard>
           <JavaManagerRow>
-            <div>Override Game Resolution</div>
+            <div>
+              {translate('instanceManager:overview.override_game_resolution')}
+            </div>
             <Switch
               checked={height && width}
               onChange={v => {
@@ -407,7 +410,7 @@ const Overview = ({ instanceName, background, manifest }) => {
             <ResolutionInputContainer>
               <div>
                 <Input
-                  placeholder="Width"
+                  placeholder={translate('instanceManager:overview.width')}
                   value={width}
                   onChange={e => {
                     const w = parseInt(e.target.value, 10) || 854;
@@ -425,7 +428,7 @@ const Overview = ({ instanceName, background, manifest }) => {
                 />
                 &nbsp;X&nbsp;
                 <Input
-                  placeholder="Height"
+                  placeholder={translate('instanceManager:overview.height')}
                   value={height}
                   onChange={e => {
                     const h = parseInt(e.target.value, 10) || 480;
@@ -443,7 +446,7 @@ const Overview = ({ instanceName, background, manifest }) => {
                 />
               </div>
               <Select
-                placeholder="Presets"
+                placeholder={translate('instanceManager:overview.presets')}
                 onChange={v => {
                   const w = parseInt(v.split('x')[0], 10);
                   const h = parseInt(v.split('x')[1], 10);
@@ -477,7 +480,9 @@ const Overview = ({ instanceName, background, manifest }) => {
             </ResolutionInputContainer>
           )}
           <JavaManagerRow>
-            <div>Override Java Memory</div>
+            <div>
+              {translate('instanceManager:overview.override_java_memory')}
+            </div>
             <Switch
               checked={javaLocalMemory}
               onChange={v => {
@@ -510,7 +515,9 @@ const Overview = ({ instanceName, background, manifest }) => {
             </div>
           )}
           <JavaManagerRow>
-            <div>Override Java Arguments</div>
+            <div>
+              {translate('instanceManager:overview.override_java_arguments')}
+            </div>
             <Switch
               checked={javaLocalArguments}
               onChange={v => {
@@ -542,7 +549,7 @@ const Overview = ({ instanceName, background, manifest }) => {
             </JavaManagerRow>
           )}
           <JavaManagerRow>
-            <div>Custom Java Path {`<Java ${javaVersion}>`} </div>
+            <div>{translate('instanceManager:overview.custom_java_path')} {`<Java ${javaVersion}>`} </div>
             <Switch
               checked={customJavaPath}
               onChange={v => {

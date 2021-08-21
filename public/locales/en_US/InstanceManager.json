@@ -1,0 +1,66 @@
+{
+  "index": {
+    "overview": "Overview",
+    "mods": "Mods",
+    "modpack": "Modpack",
+    "notes": "Notes",
+    "resource_pack": "Resource Pack",
+    "screenshots": "Screenshots",
+    "instance_manager": "Instance Manager",
+    "change_icon": "Change icon"
+  },
+  "modpack": {
+    "select_version": "Select a version",
+    "loading_versions": "Loading Versions",
+    "change_version": "Switch Version",
+    "installed_version": "Installed version:"
+  },
+  "mods": {
+    "copy_name": "Copy Name",
+    "select_all": "Select All",
+    "add_mod": "Add Mod",
+    "search_in": "Search in",
+    "mods": "mods",
+    "update_all_mods": "Update all mods"
+  },
+  "notes": {
+    "enter_some_notes": "Enter some notes..."
+  },
+  "overview": {
+    "minecraft_version": "Minecraft Version",
+    "modloader": "Modloader",
+    "modloader_version": "Modloader Version",
+    "mods": "Mods",
+    "played_time": "Played Time",
+    "last_played": "Last Played",
+    "curse_modpack": "Curse Modpack",
+    "rename": "Rename",
+    "override_game_resolution": "Override Game Resolution",
+    "width": "Width",
+    "height": "Height",
+    "presets": "Presets",
+    "override_java_memory": "Override Java Memory",
+    "override_java_arguments": "Override Java Arguments",
+    "custom_java_path": "Custom Java Path"
+  },
+  "resource_pack": {
+    "select_all": "Select All",
+    "add_resource_pack": "Add ResourcePack",
+    "no_resource_pack_available": "No ResourcePacks Available"
+  },
+  "screenshots": {
+    "image_copied_to_clipboard": "Image copied to clipboard",
+    "busy_wait_before_uploading_another_image": "Busy! Wait before uploading another image",
+    "share_the_image_via_url": "Share the image via url",
+    "selected": "selected",
+    "are_you_sure": "Are you sure you want to delete this image(s)?",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "items": "items",
+    "delete_all": "Delete all",
+    "preview": "Preview",
+    "copy_the_image": "Copy the image",
+    "image_too_big": "Image too big...",
+    "no_screenshots_available": "No Screenshot Available"
+  }
+}

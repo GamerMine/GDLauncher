@@ -18,6 +18,7 @@ import {
 import { addToQueue } from '../reducers/actions';
 import { closeModal } from '../reducers/modals/actions';
 import Logo from '../../ui/Logo';
+import { translate } from '../../../public/i18n';
 
 const InstancesMigration = () => {
   const dispatch = useDispatch();
@@ -195,7 +196,7 @@ const InstancesMigration = () => {
         height: 500px;
         width: 550px;
       `}
-      title="Instances Migration"
+      title={translate('instancesMigration:instances_migration')}
       header={false}
     >
       <Container>
@@ -211,7 +212,7 @@ const InstancesMigration = () => {
             margin-top: 20px;
           `}
         >
-          Importing {totalInstances} Instances -{' '}
+          {translate('instancesMigration:importing')} {totalInstances} {translate('instancesMigration:instances')} -{' '}
           {Object.keys(downloadQueue).length} Left
         </div>
         <div
@@ -221,7 +222,7 @@ const InstancesMigration = () => {
             color: ${props => props.theme.palette.text.secondary};
           `}
         >
-          Please, do NOT close GDLauncher.
+          {translate('instancesMigration:do_not_close_gdlauncher')}
         </div>
         <div
           css={`
@@ -232,7 +233,7 @@ const InstancesMigration = () => {
         >
           {!copying
             ? `${currentDownloadItem?.status} ${currentDownloadItem?.percentage}%`
-            : `Copying files... ${parseInt(
+            : `${translate('instancesMigration:copying_files')} ${parseInt(
                 (copiedFiles * 100) / totalFiles,
                 10
               )}%`}

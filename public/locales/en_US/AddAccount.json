@@ -1,0 +1,11 @@
+{
+  "mojang_login": "Mojang Login",
+  "email": "Email",
+  "password": "Password",
+  "add_account": "Add Account",
+  "microsoft_login": "Microsoft Login",
+  "retry": "Retry",
+  "mojang_account": "Mojang Account",
+  "microsoft_account": "Microsoft Account",
+  "external_login": "External Login"
+}

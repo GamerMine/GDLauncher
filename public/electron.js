@@ -22,14 +22,14 @@ const {
 } = require('base64url');
 const { URL } = require('url');
 const murmur = require('./native/murmur2');
+
 const nsfw = require('./native/nsfw');
 
 const fs = fss.promises;
-
 let mainWindow;
 let tray;
-let watcher;
 
+let watcher;
 const discordRPC = require('./discordRPC');
 
 const gotTheLock = app.requestSingleInstanceLock();
@@ -586,12 +586,20 @@ ipcMain.handle('init-discord-rpc', () => {
   discordRPC.initRPC();
 });
 
-ipcMain.handle('update-discord-rpc', (event, p) => {
+ipcMain.handle('update-details-discord-rpc', (event, p) => {
   discordRPC.update(p);
 });
 
 ipcMain.handle('reset-discord-rpc', () => {
   discordRPC.reset();
+});
+
+ipcMain.handle('update-state-discord-rpc', (event, p) => {
+  discordRPC.updateState(p);
+});
+
+ipcMain.handle('update-timestamp-discord-rpc', (event, p) => {
+  discordRPC.updateTimestamp(p);
 });
 
 ipcMain.handle('shutdown-discord-rpc', () => {

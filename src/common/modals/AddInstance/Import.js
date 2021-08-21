@@ -14,6 +14,7 @@ import { getAddon, getAddonFiles } from '../../api';
 import { downloadFile } from '../../../app/desktop/utils/downloader';
 import { CURSEFORGE, FABRIC, FORGE, VANILLA } from '../../utils/constants';
 import { transparentize } from 'polished';
+import { translate } from '../../../../public/i18n';
 
 const Import = ({
   setModpack,
@@ -148,7 +149,7 @@ const Import = ({
   return (
     <Container>
       <div>
-        Local file or link to a direct download
+        {translate('addInstance:import.local_file_or_link_to_a_direct_download')}
         <div
           css={`
             display: flex;
@@ -166,7 +167,7 @@ const Import = ({
             `}
           />
           <Button disabled={loading} type="primary" onClick={openFileDialog}>
-            Browse
+            {translate('addInstance:import.choose')}
           </Button>
         </div>
         <div
@@ -185,7 +186,7 @@ const Import = ({
               transparentize(0.7, props.theme.palette.grey[700])};
           `}
         >
-          {error && 'There was an issue while importing.'}
+          {error && translate('addInstance:import.there_was_an_issue_while_importing')}
         </div>
       </div>
     </Container>

@@ -1,0 +1,11 @@
+{
+  "mojang_login": "Connexion à Mojang",
+  "email": "Email",
+  "password": "Mot de passe",
+  "add_account": "Ajouter un compte",
+  "microsoft_login": "Connexion à Microsoft",
+  "retry": "Réessayer",
+  "mojang_account": "Compte Mojang",
+  "microsoft_account": "Compte Microsoft",
+  "external_login": "Connexion externe"
+}

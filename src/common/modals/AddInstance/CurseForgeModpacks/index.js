@@ -9,6 +9,7 @@ import ModpacksListWrapper from './ModpacksListWrapper';
 import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBomb, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import { translate } from '../../../../../public/i18n';
 
 let lastRequest;
 const CurseForgeModpacks = ({ setStep, setVersion, setModpack }) => {
@@ -19,7 +20,7 @@ const CurseForgeModpacks = ({ setStep, setVersion, setModpack }) => {
   const [loading, setLoading] = useState(true);
   const [minecraftVersion, setMinecraftVersion] = useState(null);
   const [categoryId, setCategoryId] = useState(null);
-  const [sortBy, setSortBy] = useState('Featured');
+  const [sortBy, setSortBy] = useState('En vedette');
   const [searchText, setSearchText] = useState('');
   const [hasNextPage, setHasNextPage] = useState(false);
   const [error, setError] = useState(false);
@@ -76,12 +77,12 @@ const CurseForgeModpacks = ({ setStep, setVersion, setModpack }) => {
     <Container>
       <HeaderContainer>
         <StyledSelect
-          placeholder="Minecraft Version"
+          placeholder={translate('addInstance:curse_forge_modpack.index.minecraft_version')}
           onChange={setMinecraftVersion}
           defaultValue={null}
           virtual={false}
         >
-          <Select.Option value={null}>All Versions</Select.Option>
+          <Select.Option value={null}>{translate('addInstance:curse_forge_modpack.index.all_versions')}</Select.Option>
           {(mcVersions || [])
             .filter(v => v?.type === 'release')
             .map(v => (
@@ -91,13 +92,13 @@ const CurseForgeModpacks = ({ setStep, setVersion, setModpack }) => {
             ))}
         </StyledSelect>
         <StyledSelect
-          placeholder="Minecraft Category"
+          placeholder={translate('addInstance:curse_forge_modpack.index.minecraft_category')}
           onChange={setCategoryId}
           defaultValue={null}
           virtual={false}
         >
           <Select.Option key={'allcategories'} value={null}>
-            All Categories
+            {translate('addInstance:curse_forge_modpack.index.all_categories')}
           </Select.Option>
           {(categories || [])
             .filter(v => v?.rootGameCategoryId === 4471)
@@ -126,32 +127,32 @@ const CurseForgeModpacks = ({ setStep, setVersion, setModpack }) => {
             ))}
         </StyledSelect>
         <StyledSelect
-          placeholder="Sort by"
-          defaultValue="Featured"
+          placeholder={translate('addInstance:curse_forge_modpack.index.sort_by')}
+          defaultValue={translate('addInstance:curse_forge_modpack.index.featured')}
           onChange={setSortBy}
           virtual={false}
         >
           <Select.Option key="Featured" value="Featured">
-            Featured
+            {translate('addInstance:curse_forge_modpack.index.featured')}
           </Select.Option>
           <Select.Option key="Popularity" value="Popularity">
-            Popularity
+            {translate('addInstance:curse_forge_modpack.index.popularity')}
           </Select.Option>
           <Select.Option key="LastUpdated" value="LastUpdated">
-            Last Updated
+            {translate('addInstance:curse_forge_modpack.index.last_updated')}
           </Select.Option>
           <Select.Option key="Name" value="Name">
-            Name
+            {translate('addInstance:curse_forge_modpack.index.name')}
           </Select.Option>
           <Select.Option key="Author" value="Author">
-            Author
+            {translate('addInstance:curse_forge_modpack.index.author')}
           </Select.Option>
           <Select.Option key="TotalDownloads" value="TotalDownloads">
-            Total Downloads
+            {translate('addInstance:curse_forge_modpack.index.total_downloads')}
           </Select.Option>
         </StyledSelect>
         <StyledInput
-          placeholder="Search..."
+          placeholder={translate('addInstance:curse_forge_modpack.index.search')}
           onSearch={setSearchText}
           onChange={e => setSearchText(e.target.value)}
           style={{ width: 200 }}
@@ -176,7 +177,7 @@ const CurseForgeModpacks = ({ setStep, setVersion, setModpack }) => {
                   margin-top: 70px;
                 `}
               >
-                No modpack has been found with the current filters.
+                {translate('addInstance:curse_forge_modpack.index.no_modpack_found')}
               </div>
             </div>
           ) : (
@@ -214,7 +215,7 @@ const CurseForgeModpacks = ({ setStep, setVersion, setModpack }) => {
                 margin-top: 70px;
               `}
             >
-              An error occurred while loading the modpacks list...
+              {translate('addInstance:curse_forge_modpack.index.error_loading_modpack_list')}
             </div>
           </div>
         )}

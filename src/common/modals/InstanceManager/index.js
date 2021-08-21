@@ -21,6 +21,7 @@ import {
   updateInstanceConfig
 } from '../../reducers/actions';
 import instanceDefaultBackground from '../../../common/assets/instance_default.png';
+import { translate } from '../../../../public/i18n';
 
 const SideMenu = styled.div`
   display: flex;
@@ -138,29 +139,29 @@ const InstanceBackground = styled.div`
 
 const menuEntries = {
   overview: {
-    name: 'Overview',
+    name: translate('instanceManager:index.overview'),
     component: AsyncComponent(lazy(() => import('./Overview')))
   },
   mods: {
-    name: 'Mods',
+    name: translate('instanceManager:index.mods'),
     component: AsyncComponent(lazy(() => import('./Mods')))
   },
   modpack: {
-    name: 'Modpack',
+    name: translate('instanceManager:index.modpack'),
     component: AsyncComponent(lazy(() => import('./Modpack')))
   },
   notes: {
-    name: 'Notes',
+    name: translate('instanceManager:index.notes'),
     component: AsyncComponent(lazy(() => import('./Notes')))
   },
   resourcePacks: {
-    name: 'Resource Packs',
+    name: translate('instanceManager:index.resource_pack'),
     component: AsyncComponent(lazy(() => import('./ResourcePacks')))
   },
   // resourcePacks: { name: "Resource Packs", component: Overview },
   // worlds: { name: "Worlds", component: Overview },
   screenshots: {
-    name: 'Screenshots',
+    name: translate('instanceManager:index.screenshots'),
     component: AsyncComponent(lazy(() => import('./Screenshots')))
   }
   // settings: { name: "Settings", component: Overview },
@@ -243,7 +244,7 @@ const InstanceManager = ({ instanceName }) => {
         width: 85%;
         max-width: 1500px;
       `}
-      title={`Instance Manager - ${instanceName}`}
+      title={`${translate('instanceManager:index.instance_manager')} - ${instanceName}`}
       removePadding
     >
       <Container>
@@ -251,7 +252,7 @@ const InstanceManager = ({ instanceName }) => {
           <SideMenu>
             <InstanceBackground onClick={openFileDialog} imagePath={background}>
               <Overlay />
-              <p>Change Icon</p>
+              <p>{translate('instanceManager:index.change_icon')}</p>
               {background && (
                 <FontAwesomeIcon
                   icon={faTimesCircle}

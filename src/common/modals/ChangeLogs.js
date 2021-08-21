@@ -143,7 +143,7 @@ const ChangeLogs = () => {
         height: 550px;
         width: 450px;
       `}
-      title={`What's new in ${version}`}
+      title={`Quoi de neuf dans la version ${version}`}
       removePadding
     >
       <Container>

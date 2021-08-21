@@ -19,6 +19,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { updateInstanceConfig } from '../../reducers/actions';
 import { _getInstancesPath, _getInstance } from '../../utils/selectors';
+import { translate } from '../../../../public/i18n';
 
 const LIST_TYPES = ['numbered-list', 'bulleted-list'];
 
@@ -67,7 +68,7 @@ const Notes = ({ instanceName }) => {
             <TextEditor
               renderElement={renderElement}
               renderLeaf={renderLeaf}
-              placeholder="Enter some notes..."
+              placeholder={translate('instanceManager:notes.enter_some_notes')}
               spellCheck
               autoFocus
             />

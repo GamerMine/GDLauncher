@@ -1,0 +1,15 @@
+{
+  "explore": "Explore",
+  "install": "Install",
+  "change_version": "Change version / explore",
+  "instance_manager": "Instance Manager",
+  "featured": "Featured",
+  "popularity": "Popularity",
+  "last_updated": "Last Updated",
+  "name": "Name",
+  "author": "Author",
+  "total_downloads": "Downloads",
+  "search_mod": "Search for a mod",
+  "no_mod_found": "No mods has been found with the current filters.",
+  "error_occurred": "An error occurred while loading the mods list..."
+}

@@ -26,6 +26,7 @@ import {
 } from '../../../../app/desktop/utils/constants';
 import { _getJavaPath } from '../../../utils/selectors';
 import { openModal } from '../../../reducers/modals/actions';
+import { translate } from '../../../../../public/i18n';
 
 const JavaSettings = styled.div`
   width: 100%;
@@ -138,16 +139,17 @@ export default function MyAccountPreferences() {
           text-align: left;
         `}
       >
-        Autodetect Java Path&nbsp; <FontAwesomeIcon icon={faJava} />
+        {translate('java:autodetect_java_path')}&nbsp;{' '}
+        <FontAwesomeIcon icon={faJava} />
         <a
           css={`
-            margin-left: 30px;
+            margin-left: 20px;
           `}
           onClick={() => {
             dispatch(openModal('JavaSetup'));
           }}
         >
-          Run Java Setup again
+          {translate('java:run_java_setup_again')}
         </a>
       </Title>
       <AutodetectPath>
@@ -156,9 +158,7 @@ export default function MyAccountPreferences() {
             text-align: left;
           `}
         >
-          Disable this to specify a custom java path to use instead of using
-          openJDK shipped with GDLauncher if that is the case select the path to
-          your Java executable.
+          {translate('java:run_java_setup_again_description')}
         </Paragraph>
         <Switch
           color="primary"
@@ -293,7 +293,8 @@ export default function MyAccountPreferences() {
             margin-bottom: 20px;
           `}
         >
-          Game Resolution&nbsp; <FontAwesomeIcon icon={faDesktop} />
+          {translate('java:game_resolution')}&nbsp;{' '}
+          <FontAwesomeIcon icon={faDesktop} />
         </Title>
         <Paragraph
           css={`
@@ -302,12 +303,12 @@ export default function MyAccountPreferences() {
             margin: 0;
           `}
         >
-          Select the initial game resolution in pixels (width x height)
+          {translate('java:game_resolution_description')}
         </Paragraph>
         <ResolutionInputContainer>
           <div>
             <Input
-              placeholder="width"
+              placeholder={translate('java:width')}
               value={mcResolution.width}
               onChange={e => {
                 const w = parseInt(e.target.value, 10);
@@ -316,7 +317,7 @@ export default function MyAccountPreferences() {
             />
             &nbsp;X&nbsp;
             <Input
-              placeholder="Height"
+              placeholder={translate('java:height')}
               value={mcResolution.height}
               onChange={e => {
                 const h = parseInt(e.target.value, 10);
@@ -325,7 +326,7 @@ export default function MyAccountPreferences() {
             />
           </div>
           <Select
-            placeholder="Presets"
+            placeholder={translate('java:presets')}
             onChange={v => {
               const w = parseInt(v.split('x')[0], 10);
               const h = parseInt(v.split('x')[1], 10);
@@ -363,7 +364,8 @@ export default function MyAccountPreferences() {
             margin-bottom: 20px;
           `}
         >
-          Java Memory&nbsp; <FontAwesomeIcon icon={faMemory} />
+          {translate('java:java_memory')}&nbsp;{' '}
+          <FontAwesomeIcon icon={faMemory} />
         </Title>
         <Paragraph
           css={`
@@ -372,7 +374,7 @@ export default function MyAccountPreferences() {
             margin: 0;
           `}
         >
-          Select the preferred amount of memory to use when launching the game
+          {translate('java:java_memory_description')}
         </Paragraph>
         <Slider
           css={`
@@ -397,14 +399,15 @@ export default function MyAccountPreferences() {
             text-align: left;
           `}
         >
-          Java Custom Arguments &nbsp; <FontAwesomeIcon icon={faList} />
+          {translate('java:java_custom_arguments')} &nbsp;{' '}
+          <FontAwesomeIcon icon={faList} />
         </Title>
         <Paragraph
           css={`
             text-align: left;
           `}
         >
-          Select the preferred custom arguments to use when launching the game
+          {translate('java:java_custom_arguments_description')}
         </Paragraph>
         <div
           css={`

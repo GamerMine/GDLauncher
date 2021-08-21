@@ -13,6 +13,7 @@ import pMap from 'p-map';
 import { get7zPath } from '../../../../app/desktop/utils';
 import { FABRIC, VANILLA, FORGE } from '../../../utils/constants';
 import { getAddon } from '../../../api';
+import { translate } from '../../../../../public/i18n';
 
 /**
  *
@@ -272,7 +273,9 @@ export default function ThirdStep({
                   {isCompleted ? (
                     <div>
                       <h1>
-                        All Done!{' '}
+                        {`${translate(
+                          'instanceExport:curse_forge.third_step.all_done'
+                        )} `}
                         <FontAwesomeIcon
                           icon={faCheck}
                           css={`
@@ -288,12 +291,14 @@ export default function ThirdStep({
                             margin-top: 20px;
                           `}
                         >
-                          Go Back To Instances
+                          {translate(
+                            'instanceExport:curse_forge.third_step.go_back_to_instances'
+                          )}
                         </Button>
                       </div>
                     </div>
                   ) : (
-                    <h2>We&apos;re doing some magical stuff</h2>
+                    <h2>{translate('instanceExport:curse_forge.third_step.doing_magical_stuff')}</h2>
                   )}
                 </div>
               </div>

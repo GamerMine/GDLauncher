@@ -10,6 +10,7 @@ import features from '../reducers/loading/features';
 import { login, loginOAuth } from '../reducers/actions';
 import { closeModal } from '../reducers/modals/actions';
 import { ACCOUNT_MICROSOFT, ACCOUNT_MOJANG } from '../utils/constants';
+import { translate } from '../../../public/i18n';
 
 const AddAccount = ({ username }) => {
   const dispatch = useDispatch();
@@ -43,23 +44,25 @@ const AddAccount = ({ username }) => {
             height: 80px;
           `}
         >
-          Mojang Login
+          {translate('addAccount:mojang_login')}
         </h1>
         <StyledInput
           disabled={!!username}
-          placeholder="Email"
+          placeholder={translate('addAccount:email')}
           value={email}
           onChange={e => setEmail(e.target.value)}
         />
         <StyledInput
           type="password"
-          placeholder="Password"
+          placeholder={translate('addAccount:password')}
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
       </FormContainer>
       <FormContainer>
-        <StyledButton onClick={addAccount}>Add Account</StyledButton>
+        <StyledButton onClick={addAccount}>
+          {translate('addAccount:add_account')}
+        </StyledButton>
       </FormContainer>
     </Container>
   );
@@ -72,10 +75,10 @@ const AddAccount = ({ username }) => {
             height: 80px;
           `}
         >
-          Microsoft Login
+          {translate('addAccount:microsoft_login')}
         </h1>
         <FormContainer>
-          <h2>External Login</h2>
+          <h2>{translate('addAccount:external_login')}</h2>
           {loginFailed ? (
             <>
               <LoginFailMessage>{loginFailed?.message}</LoginFailMessage>
@@ -85,7 +88,7 @@ const AddAccount = ({ username }) => {
                 `}
                 onClick={addMicrosoftAccount}
               >
-                Retry
+                {translate('addAccount:retry')}
               </StyledButton>
             </>
           ) : (
@@ -114,7 +117,7 @@ const AddAccount = ({ username }) => {
             key={ACCOUNT_MOJANG}
             onClick={() => setAccountType(ACCOUNT_MOJANG)}
           >
-            Mojang Account
+            {translate('addAccount:mojang_account')}
           </StyledAccountMenuItem>
           <StyledAccountMenuItem
             key={ACCOUNT_MICROSOFT}
@@ -123,7 +126,7 @@ const AddAccount = ({ username }) => {
               addMicrosoftAccount();
             }}
           >
-            Microsoft Account
+            {translate('addAccount:microsoft_account')}
           </StyledAccountMenuItem>
         </Menu>
         {accountType === ACCOUNT_MOJANG ? renderAddMojangAccount() : null}

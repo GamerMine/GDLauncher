@@ -13,6 +13,7 @@ import { closeModal } from '../../../reducers/modals/actions';
 import FirstStep from './FirstStep';
 import SecondStep from './SecondStep';
 import ThirdStep from './ThirdStep';
+import { translate } from '../../../../../public/i18n';
 
 const InstanceExportCurseForge = ({ instanceName }) => {
   const [page, setPage] = useState(0);
@@ -46,7 +47,7 @@ const InstanceExportCurseForge = ({ instanceName }) => {
         overflow: hidden;
         vertial-align: middle;
       `}
-      title="Export Instance"
+      title={translate('instanceExport:curse_forge.index.export_instance')}
     >
       <FirstStep
         setPackZipName={setPackZipName}

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import Modal from '../components/Modal';
 import { closeModal } from '../reducers/modals/actions';
+import { translate } from '../../../public/i18n';
 
 const Container = styled.div`
   display: flex;
@@ -68,14 +69,14 @@ export default function ActionConfirmation({
               applyChoice('abort', abortCallback, fileName, dispatch, delay);
             }}
           >
-            Abort
+            {translate('general:abort')}
           </Button>
           <Button
             onClick={() =>
               applyChoice('confirm', confirmCallback, fileName, dispatch, delay)
             }
           >
-            Confirm
+            {translate('general:confirm')}
           </Button>
         </Buttons>
       </Container>

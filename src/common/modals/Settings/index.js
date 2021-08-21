@@ -9,6 +9,7 @@ import SocialButtons from '../../components/SocialButtons';
 import { closeModal, openModal } from '../../reducers/modals/actions';
 import KoFiButton from '../../assets/ko-fi.png';
 import PatreonButton from '../../assets/patreon.png';
+import { translate } from '../../../../public/i18n';
 
 const Container = styled.div`
   display: flex;
@@ -122,7 +123,7 @@ export default function Settings() {
           onClick={() => dispatch(closeModal())}
         />
         <SideMenu>
-          <SettingsTitle>General</SettingsTitle>
+          <SettingsTitle>{translate('general:general')}</SettingsTitle>
           {Object.values(pages).map(val => (
             <SettingsButton
               key={val.name}
@@ -155,7 +156,7 @@ export default function Settings() {
                 font-size: 16px;
               `}
             >
-              Support GDLauncher
+              {translate('general:support_gdlauncher')}
             </span>
             <div
               css={`

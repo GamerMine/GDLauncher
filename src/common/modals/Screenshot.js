@@ -2,6 +2,7 @@ import React from 'react';
 import path from 'path';
 import styled from 'styled-components';
 import Modal from '../components/Modal';
+import { translate } from '../../../public/i18n';
 
 const Container = styled.div`
   display: flex;
@@ -27,7 +28,7 @@ export default function Screenshot({ screenshotsPath, file }) {
         max-width: 1500px;
         overflow: hidden;
       `}
-      title="ScreenShot"
+      title={translate('screenshot:screenshot')}
     >
       <Container>
         <Img src={image} />

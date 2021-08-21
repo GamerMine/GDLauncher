@@ -1,0 +1,5 @@
+{
+  "auto_update_not_available": "Auto Updates Not Available",
+  "not_available_on_this_platform": "Auto updates are not available on this platform.",
+  "auto_update_not_available_description": "Please, update GDLauncher through your package manager or download the\nnew version from our website"
+}

@@ -1,0 +1,8 @@
+{
+  "play": "JOUER",
+  "kill": "Tuer",
+  "manage": "Gérer",
+  "open_folder": "Ouvrir le dossier",
+  "export_instance": "Exporter le Modpack",
+  "delete": "Supprimer"
+}

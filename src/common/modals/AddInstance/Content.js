@@ -16,6 +16,7 @@ import NewInstance from './NewInstance';
 import minecraftIcon from '../../assets/minecraftIcon.png';
 import curseForgeIcon from '../../assets/curseforgeIcon.webp';
 import ftbIcon from '../../assets/ftbIcon.webp';
+import { translate } from '../../../../public/i18n';
 
 const Content = ({
   in: inProp,
@@ -90,7 +91,7 @@ const Content = ({
                         cursor: pointer;
                       `}
                     />
-                    Vanilla
+                    {translate('addInstance:content.vanilla')}
                   </Radio.Button>
                   <Radio.Button value={1}>
                     <img
@@ -124,7 +125,7 @@ const Content = ({
                         cursor: pointer;
                       `}
                     />
-                    Import Zip
+                    {translate('addInstance:content.import_zip')}
                   </Radio.Button>
                 </Radio.Group>
               </div>
