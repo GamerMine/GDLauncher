@@ -6,6 +6,7 @@ import { ipcRenderer } from 'electron';
 import { useSelector, useDispatch } from 'react-redux';
 import { push } from 'connected-react-router';
 import { message } from 'antd';
+import i18n from 'i18next';
 import RouteWithSubRoutes from '../../common/components/RouteWithSubRoutes';
 import {
   loginWithAccessToken,
@@ -153,6 +154,8 @@ function DesktopRoot({ store }) {
       console.log(data);
     });
   };
+
+  i18n.changeLanguage(useSelector(state => state.settings.language));
 
   // Handle already logged in account redirect
   useDidMount(init);

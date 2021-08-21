@@ -222,8 +222,6 @@ const Login = () => {
     fetchStatus().catch(console.error);
   }, []);
 
-  i18n.changeLanguage(useSelector(state => state.settings.language));
-
   return (
     <Transition in={loading} timeout={300}>
       {transitionState => (
